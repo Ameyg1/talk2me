@@ -11,7 +11,6 @@ function App() {
   return (
     <div className="App">
      <Navbar />
-       
       <UserList />
       <div style={{flexGrow: 1}}></div>
       <BottomNav />

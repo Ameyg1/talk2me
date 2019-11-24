@@ -14,7 +14,15 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import EventIcon from '@material-ui/icons/Event';
 import { MenuList } from '@material-ui/core';
+import ChatIcon from '@material-ui/icons/Chat';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -130,20 +138,20 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+        <IconButton aria-label="show chats" color="inherit">
+          <Badge badgeContent={0} color="secondary">
+            <ChatIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Chat</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+        <IconButton aria-label="show Events" color="inherit">
+          <Badge badgeContent={1} color="secondary">
+            <EventIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Event</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -170,10 +178,9 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
           >
             <MenuIcon />
-            <MenuList>#SWAKL2019</MenuList>
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Talk 2 Me
+            KUNEKT
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
