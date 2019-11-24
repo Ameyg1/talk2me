@@ -66,7 +66,7 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                <a href="mailto://${person.email}"><MailIcon color ="primary" fontSize="small"/></a>
+                <a href= {`mailto:${person.email}`}><MailIcon color ="primary" fontSize="small"/></a>
               </Typography>
               
               </span>
