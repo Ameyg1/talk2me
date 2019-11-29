@@ -102,30 +102,28 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
+   setAnchorEl(null);
     handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
+//insert
+const menuId = 'primary-search-account-menu';
+const renderMenu = (
+  <Menu
+    anchorEl={anchorEl}
+    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    id={menuId}
+    keepMounted
+    transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+    open={isMenuOpen}
+    onClose={handleMenuClose}
+  >
+    
+  </Menu>
+);
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -147,7 +145,7 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show Events" color="inherit">
-          <Badge badgeContent={1} color="secondary">
+          <Badge badgeContent={0} color="secondary">
             <EventIcon />
           </Badge>
         </IconButton>
@@ -171,14 +169,9 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+            
+
+       
           <Typography className={classes.title} variant="h6" noWrap>
             KUNEKT
           </Typography>
@@ -197,14 +190,14 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+            <IconButton aria-label="show new chat" color="inherit">
+              <Badge badgeContent={0} color="secondary">
+                <ChatIcon />
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton aria-label="show events" color="inherit">
+              <Badge badgeContent={1} color="secondary">
+                <EventIcon />
               </Badge>
             </IconButton>
             <IconButton

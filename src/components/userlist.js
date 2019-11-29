@@ -27,18 +27,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 const initialState = {
-  Person: [],
+  Attendees: []
 };
 
 export default function AlignItemsList() {
   const classes = useStyles();
   const [state, setState] = useState(initialState);
   useEffect(() => {
-      if(state.Person.length <= 0) {
-        axios.get("https://talk2meapp.azurewebsites.net/api/talktome").then((response) => {
-            console.log(JSON.stringify(response.data.attendees));
+      if(state.Attendees.length <= 0) {
+        axios.get("http://localhost:5000/api/attendees").then((response) => {
+            console.log(JSON.stringify(response.data.response));
             setState( {
-                Person: response.data.attendees
+                Attendees:response.data.response
               });
         });
       }
@@ -47,17 +47,16 @@ export default function AlignItemsList() {
   return (
     <List className={classes.root}>
       {
-      
-      state.Person.map(person => {
-          console.log(state.Person);
-          return (<div key={person.id}><ListItem alignItems="flex-start">
+      state.Attendees.map(person => {
+          console.log(state.Attendees);
+          return (<div key={person.ID}><ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <UserAvatar size="48" name={person.name} />
+          <UserAvatar size="48" name={person.NAME} />
         </ListItemAvatar>
         <ListItemText
-          primary={person.name}
-          secondary= {<div><span>{person.title}<span>,{person.comany}</span> </span> 
-          <div>{person.lookingfor} </div>
+          primary={person.NAME}
+          secondary= {<div><span>{person.TITLE}<span>,{person.COMPANY}</span> </span> 
+          <div>{person.BIO} </div>
               <div>
             <span>
               <Typography
@@ -66,7 +65,7 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                <a href= {`mailto:${person.email}`}><MailIcon color ="primary" fontSize="small"/></a>
+                <a href= {`mailto:${person.EMAIL}`}><MailIcon color ="primary" fontSize="small"/></a>
               </Typography>
               
               </span>
@@ -78,7 +77,7 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                <a href={person.facebook}><FacebookIcon fontSize="small"/></a>
+                <a href={person.FACEBOOK}><FacebookIcon fontSize="small"/></a>
               </Typography>
               
               </span>
@@ -89,7 +88,7 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-               <a href={person.twitter}> <TwitterIcon fontSize="small"/> </a>
+               <a href={person.TWITTER}> <TwitterIcon fontSize="small"/> </a>
                
               </Typography>
               
@@ -101,7 +100,7 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                <a href={person.linkedin}><LinkedInIcon fontSize="small"/></a>
+                <a href={person.LINKEDIN}><LinkedInIcon fontSize="small"/></a>
                 
               </Typography>
               

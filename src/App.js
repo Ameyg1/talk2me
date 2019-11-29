@@ -5,7 +5,13 @@ import './App.css';
 import UserList from './components/userlist';
 import Navbar from './components/navbar';
 import BottomNav from './components/bottomnav';
-
+import Profile from './components/profile';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
