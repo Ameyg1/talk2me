@@ -4,7 +4,7 @@ import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import UserList from './components/userlist';
 import Navbar from './components/navbar';
-import BottomNav from './components/bottomnav';
+//import BottomNav from './components/bottomnav';
 import Profile from './components/profile';
 import {
   BrowserRouter as Router,
@@ -19,7 +19,6 @@ function App() {
      <Navbar />
       <UserList />
       <div style={{flexGrow: 1}}></div>
-      <BottomNav />
     </div>
   );
 }

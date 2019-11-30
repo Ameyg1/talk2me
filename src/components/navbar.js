@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: 'none',
+  //  display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -167,27 +167,12 @@ const renderMenu = (
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" color="default"> 
         <Toolbar>
-            
-
-       
           <Typography className={classes.title} variant="h6" noWrap>
             KUNEKT
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+         
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show new chat" color="inherit">
