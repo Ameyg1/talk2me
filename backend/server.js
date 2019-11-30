@@ -4,15 +4,21 @@ const app = express();
 const mysql = require('mysql');
 const cors=require('cors');
  
+require('dotenv').config();
 // parse application/json
 app.use(bodyParser.json());
  app.use(cors());
+
+ const host=process.env.DB_HOST;
+ const user=process.env.DB_USER;
+ const password=process.env.DB_PASSWORD;
+ const database=process.env.DB_DATABASE;
 //create database connection
 const conn = mysql.createConnection({
-  host: 'kunekt.cojc3omxhlms.ap-southeast-2.rds.amazonaws.com',
-  user: 'admin',
-  password: 'kunekt123',
-  database: 'kunekt'
+  host: host,
+  user:user,
+  password: password,
+  database: database
 });
  
 //connect to database
@@ -69,7 +75,8 @@ app.post('/api/attendees',(req, res) => {
  
 //Server listening
 app.timeout = 0;
-app.listen(5000,() =>{
+const port= process.env.PORT || 5000;
+app.listen(port,() =>{
   console.log('Server started on port 5000...');
 });
  
