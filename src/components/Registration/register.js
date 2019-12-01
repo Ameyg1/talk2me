@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "./modal";
-import KTextField from "../../Common/TextField";
+import KTextField from "../Common/TextField";
 import "./register.css";
 
 class RegistrationForm extends Component {

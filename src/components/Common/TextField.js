@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/register.css";
+import "../Registration/register.css";
 
 export default class KTextField extends React.Component {
   renderHelpMessage() {
@@ -10,9 +10,6 @@ export default class KTextField extends React.Component {
         </span>
       );
     }
-  }
-  renderSomething() {
-    return <label>Just anything</label>;
   }
 
   render() {
