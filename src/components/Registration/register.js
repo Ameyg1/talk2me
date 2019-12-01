@@ -154,7 +154,10 @@ class RegistrationForm extends Component {
       this.state.NAME,
       this.state.TITLE,
       this.state.BIO,
-      this.state.LINKEDIN
+      this.state.LINKEDIN,
+      this.state.FAEBOOK,
+      this.state.TWITTER,
+      this.state.EMAIL
     );
     const shouldMarkError = field => {
       const hasError = errors[field];
