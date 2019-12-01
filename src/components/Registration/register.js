@@ -71,10 +71,12 @@ class RegistrationForm extends Component {
       FAEBOOK: this.state.FAEBOOK,
       TWITTER: this.state.TWITTER
     };
-    axios.post(`https://kunektapi.azurewebsites.net/api/attendees`, user).then(res => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios
+      .post(`https://kunektapi.azurewebsites.net/api/attendees`, user)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   checkData(regExp, stateName, stateValid, name) {
@@ -91,12 +93,15 @@ class RegistrationForm extends Component {
       });
     }
   }
-  validate(NAME, TITLE, BIO, LINKEDIN) {
+  validate(NAME, TITLE, BIO, LINKEDIN, FAEBOOK, TWITTER, EMAIL) {
     return {
       NAME: NAME.length === 0,
       TITLE: TITLE.length === 0,
       BIO: BIO.length === 0,
-      LINKEDIN: LINKEDIN.length === 0
+      LINKEDIN: LINKEDIN.length === 0,
+      FAEBOOK: FAEBOOK.length === 0,
+      TWITTER: TWITTER.length === 0,
+      EMAIL: EMAIL.length === 0
     };
   }
   requiredStyle(name) {
@@ -190,7 +195,7 @@ class RegistrationForm extends Component {
               className={shouldMarkError("NAME") ? "error" : ""}
               onChange={e => this.handleChange(e, "NAME")}
               style={this.requiredStyle("NAME")}
-              errorMessage={this.errorMessages("NAME")}
+              // errorMessage={this.errorMessages("NAME")}
             />
             <KTextField
               fieldTitle="Designation/Title *"
@@ -200,7 +205,7 @@ class RegistrationForm extends Component {
               className={shouldMarkError("TITLE") ? "error" : ""}
               onChange={e => this.handleChange(e, "TITLE")}
               style={this.requiredStyle("TITLE")}
-              errorMessage={this.errorMessages("TITLE")}
+              // errorMessage={this.errorMessages("TITLE")}
             />
             <KTextField
               fieldTitle="Company"
@@ -210,17 +215,17 @@ class RegistrationForm extends Component {
               className={shouldMarkError("COMPANY") ? "error" : ""}
               onChange={e => this.handleChange(e, "COMPANY")}
               style={this.requiredStyle("COMPANY")}
-              errorMessage={this.errorMessages("COMPANY")}
+              // errorMessage={this.errorMessages("COMPANY")}
             />
             <KTextField
               fieldTitle="I need help with..."
-              type="BIO"
+              type="text"
               value={this.state.COMPANY}
               fieldName="BIO"
               className={shouldMarkError("BIO") ? "error" : ""}
               onChange={e => this.handleChange(e, "BIO")}
               style={this.requiredStyle("BIO")}
-              errorMessage={this.errorMessages("BIO")}
+              // errorMessage={this.errorMessages("BIO")}
               helpMessage="Type in why you're joining this event."
               helpMessageStyle={helpMessage("BIO")}
             />
@@ -232,7 +237,7 @@ class RegistrationForm extends Component {
               className={shouldMarkError("LINKEDIN") ? "error" : ""}
               onChange={e => this.handleChange(e, "LINKEDIN")}
               style={this.requiredStyle("LINKEDIN")}
-              errorMessage={this.errorMessages("LINKEDIN")}
+              // errorMessage={this.errorMessages("LINKEDIN")}
               helpMessage="This will help invitees connect to you on LinkedIn."
               helpMessageStyle={helpMessage("LINKEDIN")}
             />
@@ -244,7 +249,7 @@ class RegistrationForm extends Component {
               className={shouldMarkError("FAEBOOK") ? "error" : ""}
               onChange={e => this.handleChange(e, "FAEBOOK")}
               style={this.requiredStyle("FAEBOOK")}
-              errorMessage={this.errorMessages("FAEBOOK")}
+              // errorMessage={this.errorMessages("FAEBOOK")}
               helpMessage="This will help invitees connect to you on Facebook."
               helpMessageStyle={helpMessage("FAEBOOK")}
             />
@@ -256,10 +261,23 @@ class RegistrationForm extends Component {
               className={shouldMarkError("TWITTER") ? "error" : ""}
               onChange={e => this.handleChange(e, "TWITTER")}
               style={this.requiredStyle("TWITTER")}
-              errorMessage={this.errorMessages("TWITTER")}
+              // errorMessage={this.errorMessages("TWITTER")}
               helpMessage="This will help invitees connect to you on Twitter."
               helpMessageStyle={helpMessage("TWITTER")}
             />
+            <KTextField
+              fieldTitle="Email"
+              type="text"
+              value={this.state.TWITTER}
+              fieldName="EMAIL"
+              className={shouldMarkError("EMAIL") ? "error" : ""}
+              onChange={e => this.handleChange(e, "EMAIL")}
+              style={this.requiredStyle("EMAIL")}
+              // errorMessage={this.errorMessages("EMAIL")}
+              helpMessage="This will help invitees connect to you on Twitter."
+              helpMessageStyle={helpMessage("EMAIL")}
+            />
+
             <div className="sb-text">
               By clicking Submit, I agree that I have read and accepted
               the&nbsp;
