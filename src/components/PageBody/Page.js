@@ -10,9 +10,6 @@ export default class Page extends React.Component {
         <Route exact path="/">
           <UserList />
         </Route>
-        <Route path="/events">
-          <h2>Event</h2>
-        </Route>
         <Route path="/profile">
           <RegistrationForm />
         </Route>

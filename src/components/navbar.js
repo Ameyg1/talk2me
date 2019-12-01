@@ -4,7 +4,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import MenuOption from "./MainMenu/MenuOption";
@@ -80,16 +79,6 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  // const handleProfileMenuOpen = event => {
-  //  setAnchorEl(event.currentTarget);
-  // };
-
-  const refreshPage = () => {
-    window.parent.location.replace(
-      "http://localhost:3000" + this.props.renderLink
-    );
-  };
-
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -104,7 +93,6 @@ export default function PrimarySearchAppBar() {
   };
   //insert
   const menuId = "primary-search-account-menu";
-
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -127,14 +115,12 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <MenuOption type="Event" label="show events" />
-        <p>Event</p>
-      </MenuItem>
-      <MenuItem>
-        <MenuOption type="Profile" label="account of current user" />
-        <p>Profile</p>
-      </MenuItem>
+      <MenuOption type="Events" label="show events" renderLink="/" />
+      <MenuOption
+        type="Profile"
+        label="account of current user"
+        renderLink="/profile"
+      />
     </Menu>
   );
 
@@ -148,22 +134,12 @@ export default function PrimarySearchAppBar() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <Router>
-              <Link to="/events"> */}
-            <MenuOption
-              type="Events"
-              label="show events"
-              renderLink="/events"
-            />
-            {/* </Link>
-              <Link to="/profile"> */}
+            <MenuOption type="Events" label="show events" renderLink="/" />
             <MenuOption
               type="Profile"
               label="account of current user"
               renderLink="/profile"
             />
-            {/* </Link>
-            </Router> */}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -179,7 +155,6 @@ export default function PrimarySearchAppBar() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
     </div>
   );
 }
