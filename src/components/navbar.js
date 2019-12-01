@@ -93,9 +93,9 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = event => {
-    setAnchorEl(event.currentTarget);
-  };
+ // const handleProfileMenuOpen = event => {
+  //  setAnchorEl(event.currentTarget);
+ // };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -135,14 +135,7 @@ const renderMenu = (
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show chats" color="inherit">
-          <Badge badgeContent={0} color="secondary">
-            <ChatIcon />
-          </Badge>
-        </IconButton>
-        <p>Chat</p>
-      </MenuItem>
+     
       <MenuItem>
         <IconButton aria-label="show Events" color="inherit">
           <Badge badgeContent={0} color="secondary">
@@ -151,7 +144,7 @@ const renderMenu = (
         </IconButton>
         <p>Event</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+  <MenuItem >
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -175,13 +168,9 @@ const renderMenu = (
          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show new chat" color="inherit">
-              <Badge badgeContent={0} color="secondary">
-                <ChatIcon />
-              </Badge>
-            </IconButton>
+           
             <IconButton aria-label="show events" color="inherit">
-              <Badge badgeContent={1} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <EventIcon />
               </Badge>
             </IconButton>
@@ -190,7 +179,6 @@ const renderMenu = (
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
               color="inherit"
             >
               <AccountCircle />
