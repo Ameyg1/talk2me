@@ -230,7 +230,7 @@ class RegistrationForm extends Component {
             <KTextField
               fieldTitle="I need help with..."
               type="text"
-              value={this.state.COMPANY}
+              value={this.state.BIO}
               fieldName="BIO"
               className={shouldMarkError("BIO") ? "error" : ""}
               onChange={e => this.handleChange(e, "BIO")}
@@ -278,7 +278,7 @@ class RegistrationForm extends Component {
             <KTextField
               fieldTitle="Email"
               type="text"
-              value={this.state.TWITTER}
+              value={this.state.EMAIL}
               fieldName="EMAIL"
               className={shouldMarkError("EMAIL") ? "error" : ""}
               onChange={e => this.handleChange(e, "EMAIL")}
