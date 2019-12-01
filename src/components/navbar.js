@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import Menu from "@material-ui/core/Menu";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import MenuOption from "./MainMenu/MenuOption";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   grow: {

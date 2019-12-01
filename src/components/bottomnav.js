@@ -1,19 +1,15 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import EventIcon from '@material-ui/icons/Event';
-import ChatIcon from '@material-ui/icons/Chat';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import EventIcon from "@material-ui/icons/Event";
+import ChatIcon from "@material-ui/icons/Chat";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles({
   root: {
-    width: "auto", 
-
-  },
+    width: "auto"
+  }
 });
 
 export default function SimpleBottomNavigation() {

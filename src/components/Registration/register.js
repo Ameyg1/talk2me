@@ -8,34 +8,40 @@ class RegistrationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      aboutMe: "",
-      linkedIn: "",
+      NAME: "",
+      TITLE: "",
+      COMPANY: "",
+      BIO: "",
+      LINKEDIN: "",
+      FAEBOOK: "",
+      TWITTER: "",
       valid: {
-        fullName: true,
-        email: true,
-        phoneNumber: true,
-        aboutMe: true,
-        linkedIn: true
+        NAME: true,
+        TITLE: true,
+        COMPANY: true,
+        BIO: true,
+        LINKEDIN: true,
+        FAEBOOK: true,
+        TWITTER: true
       },
       touched: {
-        fullName: false,
-        email: false,
-        phoneNumber: false,
-        aboutMe: false,
-        linkedIn: false
+        NAME: false,
+        TITLE: false,
+        COMPANY: false,
+        BIO: false,
+        LINKEDIN: false,
+        FAEBOOK: false,
+        TWITTER: false
       },
       modalisOpen: false
     };
 
     this.rexExpMap = {
-      fullName: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
-      email: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-      phoneNumber: /^.{8,}$/,
-      aboutMe: /^[a-z\d._]+$/,
-      linkedIn: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/
+      NAME: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      TITLE: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+      COMPANY: /^.{8,}$/,
+      BIO: /^[a-z\d._]+$/,
+      LINKEDIN: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -57,13 +63,15 @@ class RegistrationForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const user = {
-      fullName: this.state.fullName,
-      email: this.state.email,
-      phoneNumber: this.state.phoneNumber,
-      aboutMe: this.state.aboutMe,
-      linkedIn: this.state.linkedIn
+      NAME: this.state.NAME,
+      TITLE: this.state.TITLE,
+      COMPANY: this.state.COMPANY,
+      BIO: this.state.BIO,
+      LINKEDIN: this.state.LINKEDIN,
+      FAEBOOK: this.state.FAEBOOK,
+      TWITTER: this.state.TWITTER
     };
-    axios.post(`http://localhost:5000/api/attendees`, this.state).then(res => {
+    axios.post(`http://localhost:5000/api/attendees`, user).then(res => {
       console.log(res);
       console.log(res.data);
     });
@@ -83,12 +91,12 @@ class RegistrationForm extends Component {
       });
     }
   }
-  validate(fullName, email, aboutMe, linkedIn) {
+  validate(NAME, TITLE, BIO, LINKEDIN) {
     return {
-      fullName: fullName.length === 0,
-      email: email.length === 0,
-      aboutMe: aboutMe.length === 0,
-      linkedIn: linkedIn.length === 0
+      NAME: NAME.length === 0,
+      TITLE: TITLE.length === 0,
+      BIO: BIO.length === 0,
+      LINKEDIN: LINKEDIN.length === 0
     };
   }
   requiredStyle(name) {
@@ -105,12 +113,12 @@ class RegistrationForm extends Component {
       : requiredStr;
   }
   checkOnSubmit() {
-    const { fullName, email, aboutMe, linkedIn } = this.state;
+    const { NAME, TITLE, BIO, LINKEDIN } = this.state;
     const formFilled = !(
-      fullName === "" ||
-      email === "" ||
-      aboutMe === "" ||
-      linkedIn === ""
+      NAME === "" ||
+      TITLE === "" ||
+      BIO === "" ||
+      LINKEDIN === ""
     );
     const formInvalid = Object.keys(this.state.valid).some(
       x => !this.state.valid[x]
@@ -122,11 +130,11 @@ class RegistrationForm extends Component {
     }
     this.setState({
       touched: {
-        fullName: true,
-        email: true,
-        phoneNumber: true,
-        aboutMe: true,
-        linkedIn: true
+        NAME: true,
+        TITLE: true,
+        COMPANY: true,
+        BIO: true,
+        LINKEDIN: true
       }
     });
   }
@@ -138,10 +146,10 @@ class RegistrationForm extends Component {
 
   render() {
     const errors = this.validate(
-      this.state.fullName,
-      this.state.email,
-      this.state.aboutMe,
-      this.state.linkedIn
+      this.state.NAME,
+      this.state.TITLE,
+      this.state.BIO,
+      this.state.LINKEDIN
     );
     const shouldMarkError = field => {
       const hasError = errors[field];
@@ -177,56 +185,80 @@ class RegistrationForm extends Component {
             <KTextField
               fieldTitle="Full Name *"
               type="text"
-              value={this.state.fullName}
-              fieldName="fullName"
-              className={shouldMarkError("fullName") ? "error" : ""}
-              onChange={e => this.handleChange(e, "fullName")}
-              style={this.requiredStyle("fullName")}
-              errorMessage={this.errorMessages("fullName")}
+              value={this.state.NAME}
+              fieldName="NAME"
+              className={shouldMarkError("NAME") ? "error" : ""}
+              onChange={e => this.handleChange(e, "NAME")}
+              style={this.requiredStyle("NAME")}
+              errorMessage={this.errorMessages("NAME")}
             />
             <KTextField
-              fieldTitle="Email *"
+              fieldTitle="Designation/Title *"
               type="text"
-              value={this.state.email}
-              fieldName="email"
-              className={shouldMarkError("email") ? "error" : ""}
-              onChange={e => this.handleChange(e, "email")}
-              style={this.requiredStyle("email")}
-              errorMessage={this.errorMessages("email")}
+              value={this.state.TITLE}
+              fieldName="TITLE"
+              className={shouldMarkError("TITLE") ? "error" : ""}
+              onChange={e => this.handleChange(e, "TITLE")}
+              style={this.requiredStyle("TITLE")}
+              errorMessage={this.errorMessages("TITLE")}
             />
             <KTextField
-              fieldTitle="Phone No."
+              fieldTitle="Company"
               type="text"
-              value={this.state.phoneNumber}
-              fieldName="phoneNumber"
-              className={shouldMarkError("phoneNumber") ? "error" : ""}
-              onChange={e => this.handleChange(e, "phoneNumber")}
-              style={this.requiredStyle("phoneNumber")}
-              errorMessage={this.errorMessages("phoneNumber")}
+              value={this.state.COMPANY}
+              fieldName="COMPANY"
+              className={shouldMarkError("COMPANY") ? "error" : ""}
+              onChange={e => this.handleChange(e, "COMPANY")}
+              style={this.requiredStyle("COMPANY")}
+              errorMessage={this.errorMessages("COMPANY")}
             />
             <KTextField
               fieldTitle="I need help with..."
-              type="aboutMe"
-              value={this.state.phoneNumber}
-              fieldName="aboutMe"
-              className={shouldMarkError("aboutMe") ? "error" : ""}
-              onChange={e => this.handleChange(e, "aboutMe")}
-              style={this.requiredStyle("aboutMe")}
-              errorMessage={this.errorMessages("aboutMe")}
+              type="BIO"
+              value={this.state.COMPANY}
+              fieldName="BIO"
+              className={shouldMarkError("BIO") ? "error" : ""}
+              onChange={e => this.handleChange(e, "BIO")}
+              style={this.requiredStyle("BIO")}
+              errorMessage={this.errorMessages("BIO")}
               helpMessage="Type in why you're joining this event."
-              helpMessageStyle={helpMessage("aboutMe")}
+              helpMessageStyle={helpMessage("BIO")}
             />
             <KTextField
               fieldTitle="LinkedIn URL"
               type="text"
-              value={this.state.linkedIn}
-              fieldName="linkedIn"
-              className={shouldMarkError("linkedIn") ? "error" : ""}
-              onChange={e => this.handleChange(e, "linkedIn")}
-              style={this.requiredStyle("linkedIn")}
-              errorMessage={this.errorMessages("linkedIn")}
+              value={this.state.LINKEDIN}
+              fieldName="LINKEDIN"
+              className={shouldMarkError("LINKEDIN") ? "error" : ""}
+              onChange={e => this.handleChange(e, "LINKEDIN")}
+              style={this.requiredStyle("LINKEDIN")}
+              errorMessage={this.errorMessages("LINKEDIN")}
               helpMessage="This will help invitees connect to you on LinkedIn."
-              helpMessageStyle={helpMessage("linkedIn")}
+              helpMessageStyle={helpMessage("LINKEDIN")}
+            />
+            <KTextField
+              fieldTitle="Facebook URL"
+              type="text"
+              value={this.state.FAEBOOK}
+              fieldName="FAEBOOK"
+              className={shouldMarkError("FAEBOOK") ? "error" : ""}
+              onChange={e => this.handleChange(e, "FAEBOOK")}
+              style={this.requiredStyle("FAEBOOK")}
+              errorMessage={this.errorMessages("FAEBOOK")}
+              helpMessage="This will help invitees connect to you on Facebook."
+              helpMessageStyle={helpMessage("FAEBOOK")}
+            />
+            <KTextField
+              fieldTitle="Twitter URL"
+              type="text"
+              value={this.state.TWITTER}
+              fieldName="TWITTER"
+              className={shouldMarkError("TWITTER") ? "error" : ""}
+              onChange={e => this.handleChange(e, "TWITTER")}
+              style={this.requiredStyle("TWITTER")}
+              errorMessage={this.errorMessages("TWITTER")}
+              helpMessage="This will help invitees connect to you on Twitter."
+              helpMessageStyle={helpMessage("TWITTER")}
             />
             <div className="sb-text">
               By clicking Submit, I agree that I have read and accepted
