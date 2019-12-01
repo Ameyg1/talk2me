@@ -31,7 +31,7 @@ export default function AlignItemsList() {
   const [state, setState] = useState(initialState);
   useEffect(() => {
     if (state.Attendees.length <= 0) {
-      axios.get("https://kunekt.co").then(response => {
+      axios.get("https://kunektapi.azurewebsites.net/api/attendees").then(response => {
         console.log(JSON.stringify(response.data.response));
         setState({
           Attendees: response.data.response

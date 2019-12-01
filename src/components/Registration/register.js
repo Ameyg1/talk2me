@@ -71,7 +71,7 @@ class RegistrationForm extends Component {
       FAEBOOK: this.state.FAEBOOK,
       TWITTER: this.state.TWITTER
     };
-    axios.post(`http://kunekt.co`, user).then(res => {
+    axios.post(`https://kunektapi.azurewebsites.net/api/attendees`, user).then(res => {
       console.log(res);
       console.log(res.data);
     });
