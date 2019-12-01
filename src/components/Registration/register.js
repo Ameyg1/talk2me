@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Modal from "./modal";
 import KTextField from "../Common/TextField";
 import "./register.css";
+import axios from "axios";
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -53,6 +54,21 @@ class RegistrationForm extends Component {
       );
     });
   };
+  handleSubmit = e => {
+    e.preventDefault();
+    const user = {
+      fullName: this.state.fullName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      aboutMe: this.state.aboutMe,
+      linkedIn: this.state.linkedIn
+    };
+    axios.post(`http://localhost:5000/api/attendees`, this.state).then(res => {
+      console.log(res);
+      console.log(res.data);
+    });
+  };
+
   checkData(regExp, stateName, stateValid, name) {
     this.setState({
       touched: { ...this.state.touched, [name]: true }
@@ -219,8 +235,8 @@ class RegistrationForm extends Component {
             </div>
             <button
               className="sb-btn"
-              type="button"
-              onClick={this.checkOnSubmit}
+              type="submit"
+              onClick={this.handleSubmit}
             >
               SUBMIT
             </button>
