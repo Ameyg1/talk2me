@@ -8,7 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 class MenuOption extends React.Component {
   refreshPage = () => {
     window.parent.location.replace(
-      "https://master.d2ymg4og9qeqjh.amplifyapp.com/" + this.props.renderLink
+      "https://master.d2ymg4og9qeqjh.amplifyapp.com" + this.props.renderLink
     );
   };
 
