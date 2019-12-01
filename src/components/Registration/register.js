@@ -136,9 +136,26 @@ class RegistrationForm extends Component {
       return { display: shouldMarkError(name) ? "none" : "block" };
     };
 
+    const isMobile = () => {
+      if (
+        navigator.userAgent.includes("Android") &&
+        navigator.userAgent.includes("iPhone") &&
+        navigator.userAgent.includes("iPad") &&
+        navigator.userAgent.includes("Windows Phone")
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const setStyleForComponent = styleName => {
+      return isMobile ? styleName : styleName.concat("-desktop");
+    };
+
     return (
       <div className="container">
-        <div className="register-form">
+        <div className={setStyleForComponent("register-form")}>
           <div className="title">Create Your Free Account</div>
           <div className="form">
             <KTextField

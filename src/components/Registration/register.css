@@ -1,11 +1,19 @@
 .register-form {
+  width: 90%;
+  height: 590px;
+  border: 1px solid rgb(202, 202, 202);
+  margin: 50px auto;
+}
+.register-form-desktop {
   width: 450px;
   height: 590px;
   border: 1px solid rgb(202, 202, 202);
   margin: 50px auto;
 }
+
 .form {
   height: 100%;
+  width: 100%;
 }
 .form div {
   margin: 23px 22px;
