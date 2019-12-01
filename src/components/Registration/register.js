@@ -15,6 +15,7 @@ class RegistrationForm extends Component {
       LINKEDIN: "",
       FAEBOOK: "",
       TWITTER: "",
+      EMAIL: "",
       valid: {
         NAME: true,
         TITLE: true,
@@ -22,7 +23,8 @@ class RegistrationForm extends Component {
         BIO: true,
         LINKEDIN: true,
         FAEBOOK: true,
-        TWITTER: true
+        TWITTER: true,
+        EMAIL: true
       },
       touched: {
         NAME: false,
@@ -31,17 +33,19 @@ class RegistrationForm extends Component {
         BIO: false,
         LINKEDIN: false,
         FAEBOOK: false,
-        TWITTER: false
+        TWITTER: false,
+        EMAIL: false
       },
       modalisOpen: false
     };
 
     this.rexExpMap = {
       NAME: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
-      TITLE: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-      COMPANY: /^.{8,}$/,
-      BIO: /^[a-z\d._]+$/,
-      LINKEDIN: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/
+      TITLE: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      COMPANY: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      BIO: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      LINKEDIN: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      EMAIL: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -69,7 +73,8 @@ class RegistrationForm extends Component {
       BIO: this.state.BIO,
       LINKEDIN: this.state.LINKEDIN,
       FAEBOOK: this.state.FAEBOOK,
-      TWITTER: this.state.TWITTER
+      TWITTER: this.state.TWITTER,
+      EMAIL: this.state.EMAIL
     };
     axios
       .post(`https://kunektapi.azurewebsites.net/api/attendees`, user)
