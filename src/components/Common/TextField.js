@@ -12,19 +12,38 @@ export default class KTextField extends React.Component {
     }
   }
 
+  renderInputOfType(type) {
+    if (this.props.type === "textarea") {
+      return (
+        <textarea
+          value={this.props.value}
+          rows="6"
+          name={this.props.fieldName}
+          id={this.props.fieldName}
+          className={this.props.className}
+          onChange={this.props.onChange}
+        />
+      );
+    } else {
+      return (
+        <input
+          type={this.props.type}
+          value={this.props.value}
+          name={this.props.fieldName}
+          id={this.props.fieldName}
+          className={this.props.className}
+          onChange={this.props.onChange}
+        />
+      );
+    }
+  }
+
   render() {
     return (
       <div>
         <label>
           {this.props.fieldTitle}
-          <input
-            type={this.props.type}
-            value={this.props.value}
-            name={this.props.fieldName}
-            id={this.props.fieldName}
-            className={this.props.className}
-            onChange={this.props.onChange}
-          />
+          {this.renderInputOfType(this.props.type)}
         </label>
         {this.renderHelpMessage()}
         <span className="required-field" style={this.props.style}>
