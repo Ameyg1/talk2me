@@ -59,6 +59,39 @@ class RegistrationForm extends Component {
     this.checkOnSubmit = this.checkOnSubmit.bind(this);
   }
 
+  resetState() {
+    this.setState({
+      NAME: "",
+      TITLE: "",
+      COMPANY: "",
+      BIO: "",
+      LINKEDIN: "",
+      FAEBOOK: "",
+      TWITTER: "",
+      EMAIL: "",
+      valid: {
+        NAME: true,
+        TITLE: true,
+        COMPANY: true,
+        BIO: true,
+        LINKEDIN: true,
+        FAEBOOK: true,
+        TWITTER: true,
+        EMAIL: true
+      },
+      touched: {
+        NAME: false,
+        TITLE: false,
+        COMPANY: false,
+        BIO: false,
+        LINKEDIN: false,
+        FAEBOOK: false,
+        TWITTER: false,
+        EMAIL: false
+      },
+      modalisOpen: false
+    });
+  }
   isRequiredFieldsFilled() {
     return this.state.NAME && this.state.TITLE && this.state.EMAIL
       ? true
@@ -96,9 +129,10 @@ class RegistrationForm extends Component {
           console.log(res.data);
         });
 
-      window.scrollTo(0, 0);
       this.setState({ messageIsDisplayed: true });
       this.setState({ messageStatus: "success" });
+      this.resetState();
+      window.scrollTo(0, 0);
     } else {
       window.scrollTo(0, 0);
       this.setState({ messageIsDisplayed: true });
