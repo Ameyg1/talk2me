@@ -16,7 +16,7 @@ class MenuOption extends React.Component {
     switch (option) {
       case "Profile":
         return <AccountCircle />;
-      case "Events":
+      case "UserList":
         return <EventIcon />;
       case "More":
         return <MoreIcon />;
@@ -48,14 +48,23 @@ class MenuOption extends React.Component {
 
   renderMenu = device => {
     if (device === "mobile") {
-      return <MenuItem>{this.renderMenuOption()}</MenuItem>;
+      return (
+        <MenuItem>
+          {this.renderMenuOption()}
+          <p>{this.props.titleText}</p>
+        </MenuItem>
+      );
     } else {
       return this.renderMenuOption();
     }
   };
 
   render() {
-    return <div>{this.renderMenu(this.props.device)}</div>;
+    return (
+      <div onClick={this.refreshPage.bind(this)}>
+        {this.renderMenu(this.props.device)}
+      </div>
+    );
   }
 }
 

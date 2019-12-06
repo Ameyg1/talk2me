@@ -95,10 +95,18 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuOption type="Events" label="show events" renderLink="/" />
       <MenuOption
+        device="mobile"
+        type="UserList"
+        label="show events"
+        titleText="Attendees"
+        renderLink="/"
+      />
+      <MenuOption
+        device="mobile"
         type="Profile"
         label="account of current user"
+        titleText="Register"
         renderLink="/profile"
       />
     </Menu>
@@ -114,7 +122,7 @@ export default function PrimarySearchAppBar() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <MenuOption type="Events" label="show events" renderLink="/" />
+            <MenuOption type="UserList" label="show events" renderLink="/" />
             <MenuOption
               type="Profile"
               label="account of current user"
@@ -132,9 +140,9 @@ export default function PrimarySearchAppBar() {
               <MoreIcon />
             </IconButton>
           </div>
+          {renderMobileMenu}
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
     </div>
   );
 }

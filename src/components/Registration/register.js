@@ -132,31 +132,20 @@ class RegistrationForm extends Component {
             this.setState({ messageStatus: "success" });
             this.resetState();
             window.scrollTo(0, 0);
-            console.log("Entered Success");
           },
           err => {
             this.setState({ messageIsDisplayed: true });
             this.setState({ messageStatus: "request failure" });
             window.scrollTo(0, 0);
-            console.log("Entered Service Failure");
           }
         );
       this.setState({ messageIsDisplayed: true });
       this.setState({ messageStatus: "waiting" });
       window.scrollTo(0, 0);
-      console.log("Still waiting");
     } else {
       this.setState({ messageIsDisplayed: true });
       this.setState({ messageStatus: "failure" });
       window.scrollTo(0, 0);
-      console.log(
-        "Failed Assetions: " +
-          this.state.NAME +
-          ", " +
-          this.state.TITLE +
-          ", " +
-          this.state.EMAIL
-      );
     }
   };
 
