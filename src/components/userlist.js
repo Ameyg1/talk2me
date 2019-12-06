@@ -31,14 +31,46 @@ export default function AlignItemsList() {
   const [state, setState] = useState(initialState);
   useEffect(() => {
     if (state.Attendees.length <= 0) {
-      axios.get("https://kunektapi.azurewebsites.net/api/attendees").then(response => {
-        console.log(JSON.stringify(response.data.response));
-        setState({
-          Attendees: response.data.response
+      axios
+        .get("https://kunektapi.azurewebsites.net/api/attendees")
+        .then(response => {
+          console.log(JSON.stringify(response.data.response));
+          setState({
+            Attendees: response.data.response
+          });
         });
-      });
     }
   });
+
+  const addAnchorFor = (platformValue, platformName) => {
+    return platformValue ? (
+      <span>
+        <Typography
+          component="span"
+          variant="body2"
+          className={classes.inline}
+          color="textPrimary"
+        >
+          <a href={platformValue}>{setIconFor(platformName)}</a>
+        </Typography>
+      </span>
+    ) : null;
+  };
+
+  const setIconFor = platformName => {
+    switch (platformName) {
+      case "facebook":
+        return <FacebookIcon fontSize="small" />;
+      case "twitter":
+        return <TwitterIcon fontSize="small" />;
+      case "linkedIn":
+        return <LinkedInIcon fontSize="small" />;
+      case "email":
+        return <MailIcon color="primary" fontSize="small" />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <List className={classes.root}>
@@ -60,56 +92,10 @@ export default function AlignItemsList() {
                     </span>
                     <div>{person.BIO} </div>
                     <div>
-                      <span>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          <a href={`mailto:${person.EMAIL}`}>
-                            <MailIcon color="primary" fontSize="small" />
-                          </a>
-                        </Typography>
-                      </span>
-
-                      <span>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          <a href={person.FACEBOOK}>
-                            <FacebookIcon fontSize="small" />
-                          </a>
-                        </Typography>
-                      </span>
-                      <span>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          <a href={person.TWITTER}>
-                            {" "}
-                            <TwitterIcon fontSize="small" />{" "}
-                          </a>
-                        </Typography>
-                      </span>
-                      <span>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          <a href={person.LINKEDIN}>
-                            <LinkedInIcon fontSize="small" />
-                          </a>
-                        </Typography>
-                      </span>
+                      {addAnchorFor(person.FACEBOOK, "email")}
+                      {addAnchorFor(person.FACEBOOK, "facebook")}
+                      {addAnchorFor(person.FACEBOOK, "twitter")}
+                      {addAnchorFor(person.FACEBOOK, "linkedIn")}
                     </div>
                   </div>
                 }

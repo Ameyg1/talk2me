@@ -10,17 +10,27 @@ export default class MessageBox extends React.Component {
   }
 
   isSuccess(propValue) {
-    if (this.props.status === "success") {
-      return propValue + "-success";
-    } else {
-      return propValue + "-failure";
+    switch (this.props.status) {
+      case "success":
+        return propValue + "-success";
+      case "waiting":
+        return propValue + "-waiting";
+      default:
+        return propValue + "-failure";
     }
   }
 
   renderMessageText() {
-    return this.props.status === "success"
-      ? "Great! Your profile is created"
-      : "Please fill up the mandatory fields (marked with *)";
+    switch (this.props.status) {
+      case "success":
+        return "Great! Your profile is created";
+      case "failure":
+        return "Please fill up the mandatory fields (marked with *)";
+      case "waiting":
+        return "Please wait while we complete your registration...";
+      default:
+        return "Oops, something went wrong. Please try again after sometime.";
+    }
   }
 
   closeMessageBox = () => {
