@@ -91,10 +91,10 @@ export default function AlignItemsList() {
                     </span>
                     <div>{person.BIO} </div>
                     <div>
-                      {addAnchorFor(person.FACEBOOK, "email")}
+                      {addAnchorFor(person.EMAIL, "email")}
                       {addAnchorFor(person.FACEBOOK, "facebook")}
-                      {addAnchorFor(person.FACEBOOK, "twitter")}
-                      {addAnchorFor(person.FACEBOOK, "linkedIn")}
+                      {addAnchorFor(person.TWITTER, "twitter")}
+                      {addAnchorFor(person.LINKEDIN, "linkedIn")}
                     </div>
                   </div>
                 }
