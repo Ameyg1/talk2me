@@ -75,7 +75,6 @@ export default function AlignItemsList() {
   return (
     <List className={classes.root}>
       {state.Attendees.map(person => {
-        console.log(state.Attendees);
         return (
           <div key={person.ID}>
             <ListItem alignItems="flex-start">
