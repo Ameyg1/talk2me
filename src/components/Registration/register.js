@@ -93,9 +93,7 @@ class RegistrationForm extends Component {
     });
   }
   isRequiredFieldsFilled() {
-    return this.state.NAME && this.state.TITLE && this.state.EMAIL
-      ? true
-      : false;
+    return this.state.NAME && this.state.TITLE && this.state.EMAIL;
   }
 
   handleChange = (e, name) => {
@@ -126,28 +124,25 @@ class RegistrationForm extends Component {
         .post(`https://kunektapi.azurewebsites.net/api/attendees`, user)
         .then(
           res => {
-            console.log(res);
             console.log(res.data);
-            this.setState({ messageIsDisplayed: true });
-            this.setState({ messageStatus: "success" });
             this.resetState();
-            window.scrollTo(0, 0);
+            this.displayMessageFor("success");
           },
           err => {
-            this.setState({ messageIsDisplayed: true });
-            this.setState({ messageStatus: "request failure" });
-            window.scrollTo(0, 0);
+            this.displayMessageFor("request failure");
           }
         );
-      this.setState({ messageIsDisplayed: true });
-      this.setState({ messageStatus: "waiting" });
-      window.scrollTo(0, 0);
+      this.displayMessageFor("waiting");
     } else {
-      this.setState({ messageIsDisplayed: true });
-      this.setState({ messageStatus: "failure" });
-      window.scrollTo(0, 0);
+      this.displayMessageFor("failure");
     }
   };
+
+  displayMessageFor(status) {
+    this.setState({ messageIsDisplayed: true });
+    this.setState({ messageStatus: status });
+    window.scrollTo(0, 0);
+  }
 
   renderMessage = status => {
     return (
