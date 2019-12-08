@@ -4,6 +4,7 @@ import KTextField from "../Common/TextField";
 import "./register.css";
 import axios from "axios";
 import MessageBox from "../Common/MessageBox";
+import socialPlatformURL from "../../Reusables/Constants";
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -47,16 +48,15 @@ class RegistrationForm extends Component {
       TITLE: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
       COMPANY: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
       BIO: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
-      LINKEDIN: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
-      FAEBOOK: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
-      TWITTER: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      // LINKEDIN: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      // FAEBOOK: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      // TWITTER: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
       EMAIL: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.checkData = this.checkData.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.checkOnSubmit = this.checkOnSubmit.bind(this);
   }
 
   resetState() {
@@ -98,12 +98,7 @@ class RegistrationForm extends Component {
 
   handleChange = (e, name) => {
     this.setState({ [e.target.name]: e.target.value }, () => {
-      this.checkData(
-        this.rexExpMap[name],
-        this.state[name],
-        this.state.valid[name],
-        name
-      );
+      this.checkData(this.rexExpMap[name], this.state[name], name);
     });
   };
 
@@ -150,29 +145,75 @@ class RegistrationForm extends Component {
     );
   };
 
-  checkData(regExp, stateName, stateValid, name) {
+  setFieldValidity(fieldName, isValid) {
+    this.setState({
+      valid: { ...this.state.valid, [fieldName]: isValid }
+    });
+  }
+
+  async checkData(regExp, stateName, name) {
     this.setState({
       touched: { ...this.state.touched, [name]: true }
     });
-    if (regExp.test(stateName)) {
-      this.setState({
-        valid: { ...this.state.valid, [name]: true }
-      });
-    } else {
-      this.setState({
-        valid: { ...this.state.valid, [name]: false }
-      });
+    const errors = this.validate(
+      this.state.NAME,
+      this.state.TITLE,
+      this.state.COMPANY,
+      this.state.BIO,
+      this.state.LINKEDIN,
+      this.state.FAEBOOK,
+      this.state.TWITTER,
+      this.state.EMAIL
+    );
+    await this.setFieldValidity(name, !errors[name]);
+    if (
+      this.state.valid[name] &&
+      name !== "LINKEDIN" &&
+      name !== "FAEBOOK" &&
+      name !== "TWITTER"
+    ) {
+      if (regExp.test(stateName)) {
+        this.setFieldValidity(name, true);
+      } else {
+        this.setFieldValidity(name, false);
+      }
     }
   }
-  validate(NAME, TITLE, BIO, LINKEDIN, FAEBOOK, TWITTER, EMAIL) {
+  checkEmptyField(NAME, TITLE, EMAIL) {
     return {
       NAME: NAME.length === 0,
       TITLE: TITLE.length === 0,
-      BIO: BIO.length === 0,
-      LINKEDIN: LINKEDIN.length === 0,
-      FAEBOOK: FAEBOOK.length === 0,
-      TWITTER: TWITTER.length === 0,
       EMAIL: EMAIL.length === 0
+    };
+  }
+  validateLink(LINKEDIN, FAEBOOK, TWITTER) {
+    return {
+      LINKEDIN: !(
+        LINKEDIN.substring(0, 25) === socialPlatformURL[LINKEDIN] &&
+        LINKEDIN.length > 29
+      ),
+      FAEBOOK: !(
+        FAEBOOK.substring(0, 25) === socialPlatformURL[FAEBOOK] &&
+        FAEBOOK.length > 29
+      ),
+      TWITTER: !(
+        TWITTER.substring(0, 24) === socialPlatformURL[TWITTER] &&
+        TWITTER.length > 28
+      )
+    };
+  }
+  validate(NAME, TITLE, COMPANY, BIO, LINKEDIN, FAEBOOK, TWITTER, EMAIL) {
+    const mandatoryFieldAssertions = this.checkEmptyField(NAME, TITLE, EMAIL);
+    const validLinks = this.validateLink(LINKEDIN, FAEBOOK, TWITTER);
+    return {
+      NAME: mandatoryFieldAssertions.NAME,
+      TITLE: mandatoryFieldAssertions.TITLE,
+      COMPANY: false,
+      BIO: false,
+      LINKEDIN: validLinks.LINKEDIN,
+      FAEBOOK: validLinks.FAEBOOK,
+      TWITTER: validLinks.TWITTER,
+      EMAIL: mandatoryFieldAssertions.EMAIL
     };
   }
   requiredStyle(name) {
@@ -182,40 +223,32 @@ class RegistrationForm extends Component {
     return { display: show ? "block" : "none" };
   }
   errorMessages(name) {
-    const requiredStr = "This field is required.";
-    const invalidStr = "Enter a valid " + name + ".";
-    if (!this.state.valid[name]) {
-      return invalidStr;
-    } else if (this.state[name]) {
-      return requiredStr;
+    if (name === "NAME" || name === "TITLE" || name === "EMAIL") {
+      const requiredStr = "This field is required.";
+      const invalidStr = "Enter a valid " + name + ".";
+      if (!this.state.valid[name]) {
+        return invalidStr;
+      } else if (this.state[name]) {
+        return requiredStr;
+      }
+    } else if (
+      name === "LINKEDIN" ||
+      name === "FAEBOOK" ||
+      name === "TWITTER"
+    ) {
+      const invalidStr =
+        "Your " +
+        name +
+        " URL should be in the format '" +
+        socialPlatformURL[name] +
+        "<your " +
+        name +
+        " ID>'";
+      if (!this.state.valid[name]) {
+        return invalidStr;
+      }
     }
     return;
-  }
-  checkOnSubmit() {
-    const { NAME, TITLE, BIO, LINKEDIN } = this.state;
-    const formFilled = !(
-      NAME === "" ||
-      TITLE === "" ||
-      BIO === "" ||
-      LINKEDIN === ""
-    );
-    const formInvalid = Object.keys(this.state.valid).some(
-      x => !this.state.valid[x]
-    );
-    const formHasErrors = !formFilled || formInvalid;
-
-    if (!formHasErrors) {
-      this.toggleModal();
-    }
-    this.setState({
-      touched: {
-        NAME: true,
-        TITLE: true,
-        COMPANY: true,
-        BIO: true,
-        LINKEDIN: true
-      }
-    });
   }
   toggleModal() {
     this.setState(prevState => ({
@@ -227,6 +260,7 @@ class RegistrationForm extends Component {
     const errors = this.validate(
       this.state.NAME,
       this.state.TITLE,
+      this.state.COMPANY,
       this.state.BIO,
       this.state.LINKEDIN,
       this.state.FAEBOOK,
@@ -326,6 +360,7 @@ class RegistrationForm extends Component {
               style={this.requiredStyle("LINKEDIN")}
               helpMessage="This will help invitees connect to you on LinkedIn."
               helpMessageStyle={helpMessage("LINKEDIN")}
+              errorMessage={this.errorMessages("LINKEDIN")}
             />
             <KTextField
               fieldTitle="Facebook URL"
@@ -337,6 +372,7 @@ class RegistrationForm extends Component {
               style={this.requiredStyle("FAEBOOK")}
               helpMessage="This will help invitees connect to you on Facebook."
               helpMessageStyle={helpMessage("FAEBOOK")}
+              errorMessage={this.errorMessages("FAEBOOK")}
             />
             <KTextField
               fieldTitle="Twitter URL"
@@ -348,6 +384,7 @@ class RegistrationForm extends Component {
               style={this.requiredStyle("TWITTER")}
               helpMessage="This will help invitees connect to you on Twitter."
               helpMessageStyle={helpMessage("TWITTER")}
+              errorMessage={this.errorMessages("TWITTER")}
             />
             <div className="sb-text">
               By clicking Submit, I agree that I have read and accepted

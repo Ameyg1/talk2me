@@ -3,9 +3,9 @@ import "../Registration/register.css";
 
 export default class KTextField extends React.Component {
   renderHelpMessage() {
-    if (this.props.helpMessage && this.props.helpMessageStyle) {
+    if (this.props.helpMessage) {
       return (
-        <span className="note" style={this.props.helpMessageStyle}>
+        <span className="note" style={{ display: "block" }}>
           {this.props.helpMessage}
         </span>
       );
