@@ -24,6 +24,20 @@ export default class KTextField extends React.Component {
           onChange={this.props.onChange}
         />
       );
+    } else if (this.props.type === "socialLink") {
+      return (
+        <label className="textfield">
+          <label className="prefieldLink">{this.props.prefieldInfo}</label>
+          <input
+            type={this.props.type}
+            value={this.props.value}
+            name={this.props.fieldName}
+            id="socialTextField"
+            className={this.props.className}
+            onChange={this.props.onChange}
+          />
+        </label>
+      );
     } else {
       return (
         <input
@@ -41,10 +55,8 @@ export default class KTextField extends React.Component {
   render() {
     return (
       <div>
-        <label>
-          {this.props.fieldTitle}
-          {this.renderInputOfType(this.props.type)}
-        </label>
+        <label>{this.props.fieldTitle}</label>
+        {this.renderInputOfType(this.props.type)}
         {this.renderHelpMessage()}
         <span className="required-field" style={this.props.style}>
           {this.props.errorMessage}

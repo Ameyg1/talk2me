@@ -144,3 +144,22 @@ label {
 .modal-input-value {
   border-bottom: 1px solid rgb(202, 202, 202);
 }
+.textfield {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(219, 219, 219);
+}
+.prefieldLink {
+  color: rgb(73, 73, 73);
+  padding-left: 3px;
+  padding-right: 2px;
+  padding-top: 7px;
+  font-size: 0.7em;
+  flex: 8;
+}
+
+#socialTextField {
+  flex: 17;
+}

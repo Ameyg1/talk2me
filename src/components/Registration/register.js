@@ -4,7 +4,9 @@ import KTextField from "../Common/TextField";
 import "./register.css";
 import axios from "axios";
 import MessageBox from "../Common/MessageBox";
-import socialPlatformURL from "../../Reusables/Constants";
+import socialPlatformURL, {
+  socialPlatformHomeURL
+} from "../../Reusables/Constants";
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -188,18 +190,9 @@ class RegistrationForm extends Component {
   }
   validateLink(LINKEDIN, FAEBOOK, TWITTER) {
     return {
-      LINKEDIN: !(
-        LINKEDIN.substring(0, 25) === socialPlatformURL.LINKEDIN &&
-        LINKEDIN.length > 29
-      ),
-      FAEBOOK: !(
-        FAEBOOK.substring(0, 25) === socialPlatformURL.FAEBOOK &&
-        FAEBOOK.length > 29
-      ),
-      TWITTER: !(
-        TWITTER.substring(0, 24) === socialPlatformURL.TWITTER &&
-        TWITTER.length > 28
-      )
+      LINKEDIN: !(LINKEDIN.length > 4),
+      FAEBOOK: !(FAEBOOK.length > 4),
+      TWITTER: !(TWITTER.length > 4)
     };
   }
   validate(NAME, TITLE, COMPANY, BIO, LINKEDIN, FAEBOOK, TWITTER, EMAIL) {
@@ -352,7 +345,8 @@ class RegistrationForm extends Component {
             />
             <KTextField
               fieldTitle="LinkedIn URL"
-              type="text"
+              type="socialLink"
+              prefieldInfo={socialPlatformHomeURL.LINKEDIN}
               value={this.state.LINKEDIN}
               fieldName="LINKEDIN"
               className={shouldMarkError("LINKEDIN") ? "error" : ""}
@@ -364,7 +358,8 @@ class RegistrationForm extends Component {
             />
             <KTextField
               fieldTitle="Facebook URL"
-              type="text"
+              type="socialLink"
+              prefieldInfo={socialPlatformHomeURL.FAEBOOK}
               value={this.state.FAEBOOK}
               fieldName="FAEBOOK"
               className={shouldMarkError("FAEBOOK") ? "error" : ""}
@@ -376,7 +371,8 @@ class RegistrationForm extends Component {
             />
             <KTextField
               fieldTitle="Twitter URL"
-              type="text"
+              type="socialLink"
+              prefieldInfo={socialPlatformHomeURL.TWITTER}
               value={this.state.TWITTER}
               fieldName="TWITTER"
               className={shouldMarkError("TWITTER") ? "error" : ""}
