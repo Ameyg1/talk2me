@@ -189,15 +189,15 @@ class RegistrationForm extends Component {
   validateLink(LINKEDIN, FAEBOOK, TWITTER) {
     return {
       LINKEDIN: !(
-        LINKEDIN.substring(0, 25) === socialPlatformURL[LINKEDIN] &&
+        LINKEDIN.substring(0, 25) === socialPlatformURL.LINKEDIN &&
         LINKEDIN.length > 29
       ),
       FAEBOOK: !(
-        FAEBOOK.substring(0, 25) === socialPlatformURL[FAEBOOK] &&
+        FAEBOOK.substring(0, 25) === socialPlatformURL.FAEBOOK &&
         FAEBOOK.length > 29
       ),
       TWITTER: !(
-        TWITTER.substring(0, 24) === socialPlatformURL[TWITTER] &&
+        TWITTER.substring(0, 24) === socialPlatformURL.TWITTER &&
         TWITTER.length > 28
       )
     };
