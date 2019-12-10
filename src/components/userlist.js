@@ -61,19 +61,19 @@ export default function AlignItemsList() {
     switch (platformName) {
       case "facebook":
         return (
-          <a href={`https:www.facebook.com/${platformValue}`}>
+          <a href={`https://www.facebook.com/${platformValue}`}>
             <FacebookIcon fontSize="small" />
           </a>
         );
       case "twitter":
         return (
-          <a href={`https:www.twitter.com/${platformValue}`}>
+          <a href={`https://www.twitter.com/${platformValue}`}>
             <TwitterIcon fontSize="small" />
           </a>
         );
       case "linkedIn":
         return (
-          <a href={`https:www.twitter.com/${platformValue}`}>
+          <a href={`https://www.linkedin.com/in/${platformValue}`}>
             <LinkedInIcon fontSize="small" />
           </a>
         );
