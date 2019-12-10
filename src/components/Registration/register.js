@@ -17,7 +17,7 @@ class RegistrationForm extends Component {
       COMPANY: "",
       BIO: "",
       LINKEDIN: "",
-      FAEBOOK: "",
+      FACEBOOK: "",
       TWITTER: "",
       EMAIL: "",
       valid: {
@@ -26,7 +26,7 @@ class RegistrationForm extends Component {
         COMPANY: true,
         BIO: true,
         LINKEDIN: true,
-        FAEBOOK: true,
+        FACEBOOK: true,
         TWITTER: true,
         EMAIL: true
       },
@@ -36,7 +36,7 @@ class RegistrationForm extends Component {
         COMPANY: false,
         BIO: false,
         LINKEDIN: false,
-        FAEBOOK: false,
+        FACEBOOK: false,
         TWITTER: false,
         EMAIL: false
       },
@@ -51,7 +51,7 @@ class RegistrationForm extends Component {
       COMPANY: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
       BIO: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
       // LINKEDIN: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
-      // FAEBOOK: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
+      // FACEBOOK: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
       // TWITTER: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/,
       EMAIL: /^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc\u00df]+$/
     };
@@ -69,7 +69,7 @@ class RegistrationForm extends Component {
       COMPANY: "",
       BIO: "",
       LINKEDIN: "",
-      FAEBOOK: "",
+      FACEBOOK: "",
       TWITTER: "",
       EMAIL: "",
       valid: {
@@ -78,7 +78,7 @@ class RegistrationForm extends Component {
         COMPANY: true,
         BIO: true,
         LINKEDIN: true,
-        FAEBOOK: true,
+        FACEBOOK: true,
         TWITTER: true,
         EMAIL: true
       },
@@ -88,7 +88,7 @@ class RegistrationForm extends Component {
         COMPANY: false,
         BIO: false,
         LINKEDIN: false,
-        FAEBOOK: false,
+        FACEBOOK: false,
         TWITTER: false,
         EMAIL: false
       },
@@ -118,7 +118,7 @@ class RegistrationForm extends Component {
         COMPANY: this.state.COMPANY,
         BIO: this.state.BIO,
         LINKEDIN: this.state.LINKEDIN,
-        FAEBOOK: this.state.FAEBOOK,
+        FACEBOOK: this.state.FACEBOOK,
         TWITTER: this.state.TWITTER,
         EMAIL: this.state.EMAIL
       };
@@ -178,7 +178,7 @@ class RegistrationForm extends Component {
       this.state.COMPANY,
       this.state.BIO,
       this.state.LINKEDIN,
-      this.state.FAEBOOK,
+      this.state.FACEBOOK,
       this.state.TWITTER,
       this.state.EMAIL
     );
@@ -186,7 +186,7 @@ class RegistrationForm extends Component {
     if (
       this.state.valid[name] &&
       name !== "LINKEDIN" &&
-      name !== "FAEBOOK" &&
+      name !== "FACEBOOK" &&
       name !== "TWITTER"
     ) {
       if (regExp.test(stateName)) {
@@ -203,23 +203,23 @@ class RegistrationForm extends Component {
       EMAIL: EMAIL.length === 0
     };
   }
-  validateLink(LINKEDIN, FAEBOOK, TWITTER) {
+  validateLink(LINKEDIN, FACEBOOK, TWITTER) {
     return {
       LINKEDIN: !(LINKEDIN.length > 4),
-      FAEBOOK: !(FAEBOOK.length > 4),
+      FACEBOOK: !(FACEBOOK.length > 4),
       TWITTER: !(TWITTER.length > 4)
     };
   }
-  validate(NAME, TITLE, COMPANY, BIO, LINKEDIN, FAEBOOK, TWITTER, EMAIL) {
+  validate(NAME, TITLE, COMPANY, BIO, LINKEDIN, FACEBOOK, TWITTER, EMAIL) {
     const mandatoryFieldAssertions = this.checkEmptyField(NAME, TITLE, EMAIL);
-    const validLinks = this.validateLink(LINKEDIN, FAEBOOK, TWITTER);
+    const validLinks = this.validateLink(LINKEDIN, FACEBOOK, TWITTER);
     return {
       NAME: mandatoryFieldAssertions.NAME,
       TITLE: mandatoryFieldAssertions.TITLE,
       COMPANY: false,
       BIO: false,
       LINKEDIN: validLinks.LINKEDIN,
-      FAEBOOK: validLinks.FAEBOOK,
+      FACEBOOK: validLinks.FACEBOOK,
       TWITTER: validLinks.TWITTER,
       EMAIL: mandatoryFieldAssertions.EMAIL
     };
@@ -241,7 +241,7 @@ class RegistrationForm extends Component {
       }
     } else if (
       name === "LINKEDIN" ||
-      name === "FAEBOOK" ||
+      name === "FACEBOOK" ||
       name === "TWITTER"
     ) {
       const invalidStr =
@@ -271,7 +271,7 @@ class RegistrationForm extends Component {
       this.state.COMPANY,
       this.state.BIO,
       this.state.LINKEDIN,
-      this.state.FAEBOOK,
+      this.state.FACEBOOK,
       this.state.TWITTER,
       this.state.EMAIL
     );
@@ -374,15 +374,15 @@ class RegistrationForm extends Component {
             <KTextField
               fieldTitle="Facebook URL"
               type="socialLink"
-              prefieldInfo={socialPlatformHomeURL.FAEBOOK}
-              value={this.state.FAEBOOK}
-              fieldName="FAEBOOK"
-              className={shouldMarkError("FAEBOOK") ? "error" : ""}
-              onChange={e => this.handleChange(e, "FAEBOOK")}
-              style={this.requiredStyle("FAEBOOK")}
+              prefieldInfo={socialPlatformHomeURL.FACEBOOK}
+              value={this.state.FACEBOOK}
+              fieldName="FACEBOOK"
+              className={shouldMarkError("FACEBOOK") ? "error" : ""}
+              onChange={e => this.handleChange(e, "FACEBOOK")}
+              style={this.requiredStyle("FACEBOOK")}
               helpMessage="This will help invitees connect to you on Facebook."
-              helpMessageStyle={helpMessage("FAEBOOK")}
-              errorMessage={this.errorMessages("FAEBOOK")}
+              helpMessageStyle={helpMessage("FACEBOOK")}
+              errorMessage={this.errorMessages("FACEBOOK")}
             />
             <KTextField
               fieldTitle="Twitter URL"
