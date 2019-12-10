@@ -51,22 +51,38 @@ export default function AlignItemsList() {
           className={classes.inline}
           color="textPrimary"
         >
-          <a href={platformValue}>{setIconFor(platformName)}</a>
+          {setIconFor(platformName, platformValue)}
         </Typography>
       </span>
     ) : null;
   };
 
-  const setIconFor = platformName => {
+  const setIconFor = (platformName, platformValue) => {
     switch (platformName) {
       case "facebook":
-        return <FacebookIcon fontSize="small" />;
+        return (
+          <a href={`https:www.facebook.com/${platformValue}`}>
+            <FacebookIcon fontSize="small" />
+          </a>
+        );
       case "twitter":
-        return <TwitterIcon fontSize="small" />;
+        return (
+          <a href={`https:www.twitter.com/${platformValue}`}>
+            <TwitterIcon fontSize="small" />
+          </a>
+        );
       case "linkedIn":
-        return <LinkedInIcon fontSize="small" />;
+        return (
+          <a href={`https:www.twitter.com/${platformValue}`}>
+            <LinkedInIcon fontSize="small" />
+          </a>
+        );
       case "email":
-        return <MailIcon color="primary" fontSize="small" />;
+        return (
+          <a href={`mailto:${platformValue}`}>
+            <MailIcon color="primary" fontSize="small" />
+          </a>
+        );
       default:
         return null;
     }

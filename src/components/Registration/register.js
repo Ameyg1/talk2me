@@ -61,6 +61,7 @@ class RegistrationForm extends Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
+  /** Resets the required states of the component to its initial values. */
   resetState() {
     this.setState({
       NAME: "",
@@ -94,16 +95,20 @@ class RegistrationForm extends Component {
       modalisOpen: false
     });
   }
+
+  /** Checks if mandatory fields are filled */
   isRequiredFieldsFilled() {
     return this.state.NAME && this.state.TITLE && this.state.EMAIL;
   }
 
+  /** Dictates what happens if a textfield value is changed */
   handleChange = (e, name) => {
     this.setState({ [e.target.name]: e.target.value }, () => {
       this.checkData(this.rexExpMap[name], this.state[name], name);
     });
   };
 
+  /** Dictates what happens on click of Submit button */
   handleSubmit = e => {
     if (this.isRequiredFieldsFilled()) {
       e.preventDefault();
@@ -135,18 +140,28 @@ class RegistrationForm extends Component {
     }
   };
 
+  /**
+   * Decides which message to display.
+   * @param status (possible options: success | waiting | failure)
+   */
   displayMessageFor(status) {
     this.setState({ messageIsDisplayed: true });
     this.setState({ messageStatus: status });
     window.scrollTo(0, 0);
   }
 
+  /** renders the HTML tags for the Message Box */
   renderMessage = status => {
     return (
       <MessageBox status={status} className="message" showMessage="true" />
     );
   };
 
+  /**
+   * Sets the state for field
+   * @param fieldName
+   * @param isValid
+   */
   setFieldValidity(fieldName, isValid) {
     this.setState({
       valid: { ...this.state.valid, [fieldName]: isValid }
