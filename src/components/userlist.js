@@ -57,6 +57,11 @@ export default function AlignItemsList() {
     ) : null;
   };
 
+  /**
+   * Icon for each of the social platform is set here.
+   * @param platformName is a string that says which platform the icon belongs to.
+   * @param platformValue is appended to the social platform link
+   */
   const setIconFor = (platformName, platformValue) => {
     switch (platformName) {
       case "facebook":

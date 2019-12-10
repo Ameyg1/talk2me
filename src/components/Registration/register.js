@@ -118,10 +118,11 @@ class RegistrationForm extends Component {
         COMPANY: this.state.COMPANY,
         BIO: this.state.BIO,
         LINKEDIN: this.state.LINKEDIN,
-        FAEBOOK: this.state.FAEBOOK,
+        FACEBOOK: this.state.FAEBOOK,
         TWITTER: this.state.TWITTER,
         EMAIL: this.state.EMAIL
       };
+      console.log(user.FACEBOOK);
       axios
         .post(`https://kunektapi.azurewebsites.net/api/attendees`, user)
         .then(
