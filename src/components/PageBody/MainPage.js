@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 import RegistrationForm from "../Registration/register";
-import UserList from "../userlist";
+import UsersList from "../UserList/UsersList";
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -17,10 +17,10 @@ export default class MainPage extends React.Component {
     return (
       <Switch>
         <Route exact path="/">
-          <UserList eventid={this.props.withEventId} />
+          <UsersList eventid={this.props.withEventId} />
         </Route>
         <Route path="/profile">
-          <RegistrationForm eventid={this.props.withEventId} />
+          <RegistrationForm />
         </Route>
       </Switch>
     );

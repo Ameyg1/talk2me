@@ -20,7 +20,7 @@ class RegistrationForm extends Component {
       FACEBOOK: "",
       TWITTER: "",
       EMAIL: "",
-      EVENT_ID: "",
+      EVENT_ID: window.localStorage.getItem("eventid"),
       valid: {
         NAME: true,
         TITLE: true,
@@ -125,7 +125,11 @@ class RegistrationForm extends Component {
         EVENT_ID: this.state.EVENT_ID
       };
       axios
-        .post(`https://kunektapi.azurewebsites.net/api/attendees`, user)
+        .post(
+          `https://kunektapi.azurewebsites.net/api/attendees/` +
+            this.state.EVENT_ID,
+          user
+        )
         .then(
           res => {
             console.log(res.data);
