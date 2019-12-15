@@ -16,10 +16,7 @@ export default class EventPopUp extends React.Component {
               <Tab className="tab-button">Create Event</Tab>
             </TabList>
             <TabPanel className="tab-panel">
-              <EnterEvent
-                onCompletion={this.props.closePopup}
-                eventId={this.props.eventId}
-              />
+              <EnterEvent onCompletion={this.props.closePopup} />
             </TabPanel>
             <TabPanel className="tab-panel">
               <CreateEvent onCompletion={this.props.closePopup} />

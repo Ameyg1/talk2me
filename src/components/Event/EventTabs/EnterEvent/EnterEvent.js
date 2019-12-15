@@ -35,7 +35,6 @@ export default class EnterEvent extends React.Component {
           PURPOSE: myEvent[0].PURPOSE
         }
       });
-      this.passOnEventId();
     } else {
       await this.setState({
         EVENT_ID: "",
@@ -50,7 +49,7 @@ export default class EnterEvent extends React.Component {
     }
   }
 
-  checkEvent = e => {
+  checkEvent = () => {
     if (this.state.EVENT_ID) {
       const eventId = {
         EVENT_ID: this.state.EVENT_ID
@@ -61,8 +60,10 @@ export default class EnterEvent extends React.Component {
           res => {
             if (res.data.response.length < 1) {
               this.displayEventData(false);
+              window.localStorage.removeItem("eventid");
             } else {
               this.displayEventData(true, res.data.response);
+              window.localStorage.setItem("eventid", this.state.EVENT_ID);
             }
           },
           err => {
@@ -71,10 +72,6 @@ export default class EnterEvent extends React.Component {
           }
         );
     }
-  };
-
-  passOnEventId = () => {
-    this.props.eventId(this.state.EVENT_ID);
   };
 
   changeLowerUI(isEventDisplayed) {

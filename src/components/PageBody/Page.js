@@ -16,10 +16,7 @@ export default class Page extends React.Component {
   }
   renderEventPopUp() {
     return !window.localStorage.getItem("eventid") ? (
-      <EventPopup
-        closePopup={this.popup.bind(this)}
-        eventId={this.setEventId}
-      />
+      <EventPopup closePopup={this.popup.bind(this)} />
     ) : null;
   }
 
@@ -28,11 +25,6 @@ export default class Page extends React.Component {
       isEventDisplayed: !this.state.isEventDisplayed,
       eventid: this.state.eventid
     });
-  };
-
-  setEventId = eventIdFromUserList => {
-    this.setState({ eventid: eventIdFromUserList });
-    window.localStorage.setItem("eventid", this.state.eventid);
   };
 
   render() {

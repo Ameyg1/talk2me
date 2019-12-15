@@ -18,25 +18,58 @@ export default class UsersList extends Component {
     super(props);
     this.state = {
       Attendees: [],
-      EVENT_ID: window.localStorage.getItem("eventid")
+      hasReceivedList: false,
+      EVENT_ID: window.localStorage.getItem("eventid"),
+      event: {
+        name: ""
+      }
     };
   }
 
-  getUsersList = () => {
-    if (this.state.Attendees.length <= 0) {
-      // setStateForEventID(this.props.eventid);
-      axios
+  getEvent = async () => {
+    if (this.state.event.name === "") {
+      const eventId = {
+        EVENT_ID: this.state.EVENT_ID
+      };
+      await axios
+        .post(`https://kunektapi.azurewebsites.net/api/event/validate`, eventId)
+        .then(
+          res => {
+            if (res.data.response.length < 1) {
+              console.log("TODO: Event Validity Error");
+            } else {
+              this.setState({
+                event: { name: res.data.response[0].EVENT_NAME }
+              });
+              console.log(res.data.response[0]);
+            }
+          },
+          err => {
+            console.log("TODO: Service Error");
+          }
+        );
+    }
+  };
+
+  getUsersList = async () => {
+    if (!this.state.hasReceivedList) {
+      await axios
         .get(
           "https://kunektapi.azurewebsites.net/api/attendees/" +
             this.state.EVENT_ID
         )
-        .then(response => {
-          console.log("Attendees:");
-          console.log(JSON.stringify(response.data.response));
-          this.setState({
-            Attendees: response.data.response
-          });
-        });
+        .then(
+          response => {
+            this.setState({
+              Attendees: response.data.response,
+              hasReceivedList: true
+            });
+            console.log(JSON.stringify(response.data.response));
+          },
+          error => {
+            console.log("TODO: Handle GetUserList error");
+          }
+        );
     }
   };
 
@@ -102,8 +135,7 @@ export default class UsersList extends Component {
     }
   };
 
-  render() {
-    this.getUsersList();
+  renderUsersList() {
     return (
       <div>
         <List className={this.useStyles.root}>
@@ -140,5 +172,11 @@ export default class UsersList extends Component {
         </List>
       </div>
     );
+  }
+
+  render() {
+    this.getEvent();
+    this.getUsersList();
+    return this.renderUsersList();
   }
 }
