@@ -1,0 +1,37 @@
+.tab-button {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  position: relative;
+  list-style: none;
+  padding: 10px 32px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #999999;
+  text-align: center;
+  font-family: "Lucida Grande";
+  flex: 1;
+}
+
+.react-tabs__tab--selected {
+  color: rgb(73, 73, 73);
+  border-radius: 20px 20px 0 0;
+  border-style: outset;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #aaa;
+  padding: 0;
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  margin: 0px;
+}
+
+.react-tabs__tab-panel--selected {
+  overflow: scroll;
+  height: 250px;
+}

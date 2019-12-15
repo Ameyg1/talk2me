@@ -38,6 +38,26 @@ export default class KTextField extends React.Component {
           />
         </label>
       );
+    } else if (this.props.type === "embeddedButton") {
+      return (
+        <label className="textfield">
+          <input
+            type={this.props.type}
+            value={this.props.value}
+            name={this.props.fieldName}
+            id="textFieldOnTheLeft"
+            className={this.props.className}
+            onChange={this.props.onChange}
+          />
+          <button
+            className="embeddedButton"
+            type="submit"
+            onClick={this.props.onButtonClick}
+          >
+            {this.props.embeddedButtonInfo}
+          </button>
+        </label>
+      );
     } else {
       return (
         <input

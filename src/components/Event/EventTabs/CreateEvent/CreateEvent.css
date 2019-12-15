@@ -163,11 +163,3 @@ label {
 #socialTextField {
   flex: 17;
 }
-
-#textFieldOnTheLeft {
-  flex: 4;
-}
-
-.embeddedButton {
-  flex: 1;
-}

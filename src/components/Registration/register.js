@@ -20,6 +20,7 @@ class RegistrationForm extends Component {
       FACEBOOK: "",
       TWITTER: "",
       EMAIL: "",
+      EVENT_ID: "",
       valid: {
         NAME: true,
         TITLE: true,
@@ -120,9 +121,9 @@ class RegistrationForm extends Component {
         LINKEDIN: this.state.LINKEDIN,
         FACEBOOK: this.state.FACEBOOK,
         TWITTER: this.state.TWITTER,
-        EMAIL: this.state.EMAIL
+        EMAIL: this.state.EMAIL,
+        EVENT_ID: this.state.EVENT_ID
       };
-      console.log(user.FACEBOOK);
       axios
         .post(`https://kunektapi.azurewebsites.net/api/attendees`, user)
         .then(
@@ -139,6 +140,11 @@ class RegistrationForm extends Component {
     } else {
       this.displayMessageFor("failure");
     }
+  };
+
+  setStateForEventId = async eventid => {
+    await this.setState({ EVENT_ID: eventid });
+    console.log("EVENT ID is Set to: " + this.state.EVENT_ID);
   };
 
   /**
@@ -301,6 +307,8 @@ class RegistrationForm extends Component {
     const setStyleForComponent = styleName => {
       return isMobile ? styleName : styleName.concat("-desktop");
     };
+
+    this.setStateForEventId(this.props.eventid);
 
     return (
       <div className="container">

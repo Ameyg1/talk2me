@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 const initialState = {
-  Attendees: []
+  Attendees: [],
+  EVENT_ID: "100001"
 };
 
 export default function AlignItemsList() {
@@ -31,8 +32,11 @@ export default function AlignItemsList() {
   const [state, setState] = useState(initialState);
   useEffect(() => {
     if (state.Attendees.length <= 0) {
+      // setStateForEventID(this.props.eventid);
       axios
-        .get("https://kunektapi.azurewebsites.net/api/attendees")
+        .get(
+          "https://kunektapi.azurewebsites.net/api/attendees/" + state.EVENT_ID
+        )
         .then(response => {
           console.log(JSON.stringify(response.data.response));
           setState({
@@ -41,6 +45,10 @@ export default function AlignItemsList() {
         });
     }
   });
+
+  // const setStateForEventID = async eventid => {
+  //   await setState({ EVENT_ID: eventid });
+  // };
 
   const addAnchorFor = (platformValue, platformName) => {
     return platformValue ? (
@@ -94,37 +102,39 @@ export default function AlignItemsList() {
   };
 
   return (
-    <List className={classes.root}>
-      {state.Attendees.map(person => {
-        return (
-          <div key={person.ID}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <UserAvatar size="48" name={person.NAME} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={person.NAME}
-                secondary={
-                  <div>
-                    <span>
-                      {person.TITLE}
-                      <span>,{person.COMPANY}</span>{" "}
-                    </span>
-                    <div>{person.BIO} </div>
-                    <div>
-                      {addAnchorFor(person.EMAIL, "email")}
-                      {addAnchorFor(person.FACEBOOK, "facebook")}
-                      {addAnchorFor(person.TWITTER, "twitter")}
-                      {addAnchorFor(person.LINKEDIN, "linkedIn")}
-                    </div>
-                  </div>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />{" "}
-          </div>
-        );
-      })}
-    </List>
+    <div>
+      <List className={classes.root}>
+        {state.Attendees.map(person => {
+          return (
+            <div key={person.ID}>
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <UserAvatar size="48" name={person.NAME} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={person.NAME}
+                  secondary={
+                    <label>
+                      <span>
+                        {person.TITLE}
+                        <span>, {person.COMPANY}</span>{" "}
+                      </span>
+                      <label>{person.BIO} </label>
+                      <label>
+                        {addAnchorFor(person.EMAIL, "email")}
+                        {addAnchorFor(person.FACEBOOK, "facebook")}
+                        {addAnchorFor(person.TWITTER, "twitter")}
+                        {addAnchorFor(person.LINKEDIN, "linkedIn")}
+                      </label>
+                    </label>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />{" "}
+            </div>
+          );
+        })}
+      </List>
+    </div>
   );
 }

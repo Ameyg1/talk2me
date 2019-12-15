@@ -164,10 +164,32 @@ label {
   flex: 17;
 }
 
-#textFieldOnTheLeft {
-  flex: 4;
+.lower-half {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  height: 90px;
+  background-color: transparent;
 }
 
-.embeddedButton {
+.event-details {
+  flex: 2;
+}
+
+#join-event {
   flex: 1;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.lower-half-tour {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  height: 90px;
+  background-color: violet;
+}
+
+.kunekt-tour {
+  flex: 2;
 }

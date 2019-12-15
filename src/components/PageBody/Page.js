@@ -1,19 +1,47 @@
 import React from "react";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
-import RegistrationForm from "../Registration/register";
-import UserList from "../userlist";
+import MainPage from "./MainPage";
+import EventPopup from "../Event/EventPopup";
 
 export default class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEventDisplayed: true,
+      isMainPageDisplayed: false,
+      eventid: ""
+    };
+  }
+
+  renderMainPage(isMainPageDisplayed, withEventId) {
+    return isMainPageDisplayed ? <MainPage withEventId={withEventId} /> : null;
+  }
+
+  popup = e => {
+    this.setState({
+      isEventDisplayed: !this.state.isEventDisplayed,
+      isMainPageDisplayed: !this.state.isMainPageDisplayed,
+      eventid: this.state.eventid
+    });
+  };
+
+  setEventId = eventIdFromUserList => {
+    this.setState({ eventid: eventIdFromUserList });
+  };
+
   render() {
     return (
-      <Switch>
-        <Route exact path="/">
-          <UserList />
-        </Route>
-        <Route path="/profile">
-          <RegistrationForm />
-        </Route>
-      </Switch>
+      <div>
+        {this.state.isEventDisplayed ? (
+          <EventPopup
+            closePopup={this.popup.bind(this)}
+            eventId={this.setEventId}
+          />
+        ) : null}
+        {this.renderMainPage(
+          this.state.isMainPageDisplayed,
+          this.state.eventid
+        )}
+      </div>
     );
   }
 }
