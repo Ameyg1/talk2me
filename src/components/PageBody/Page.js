@@ -31,7 +31,6 @@ export default class Page extends React.Component {
   render() {
     return (
       <div>
-        {console.log("URL: " + window.location.href)}
         {this.state.isEventDisplayed &&
         window.location.href ===
           "https://master.d2ymg4og9qeqjh.amplifyapp.com/" ? (
@@ -40,10 +39,13 @@ export default class Page extends React.Component {
             eventId={this.setEventId}
           />
         ) : null}
-        {this.renderMainPage(
-          this.state.isMainPageDisplayed,
-          this.state.eventid
-        )}
+        {window.location.href !==
+        "https://master.d2ymg4og9qeqjh.amplifyapp.com/"
+          ? this.renderMainPage(
+              this.state.isMainPageDisplayed,
+              this.state.eventid
+            )
+          : null}
       </div>
     );
   }
