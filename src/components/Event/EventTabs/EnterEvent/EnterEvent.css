@@ -30,11 +30,11 @@
 .sb-btn {
   background-color: #333333;
   color: #ffffff;
-  width: 90px;
+  width: 70px;
   height: 30px;
   outline: none;
-  margin-left: 22px;
-  font-size: 00.8em;
+  margin-left: 0px;
+  font-size: 0.8em;
   font-weight: bold;
   cursor: pointer;
 }
@@ -113,7 +113,6 @@ label {
   width: 90px;
   height: 30px;
   outline: none;
-  margin-left: 10%;
   font-size: 0.8em;
   font-weight: bold;
   cursor: pointer;
@@ -172,24 +171,33 @@ label {
   background-color: transparent;
 }
 
-.event-details {
-  flex: 2;
-}
-
-#join-event {
-  flex: 1;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .lower-half-tour {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   height: 90px;
-  background-color: violet;
+  background-color: transparent;
+}
+
+.event-details {
+  flex: 18;
+}
+
+#join-event {
+  flex: 7;
+  font-size: 0.7em;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
 }
 
 .kunekt-tour {
-  flex: 2;
+  flex: 18;
+  padding-right: 5px;
+}
+
+.kunekt-logo {
+  height: auto;
+  width: 100%;
+  margin: auto;
 }

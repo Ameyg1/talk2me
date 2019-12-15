@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import KTextField from "../../../Common/TextField";
 import Modal from "../../../Registration/modal";
 import "./CreateEvent.css";
@@ -7,12 +8,49 @@ export default class CreateEventForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      NAME: "",
-      TITLE: "",
-      EMAIL: "",
-      BIO: ""
+      EVENT_ID: "",
+      EVENT_NAME: "",
+      ORGANISER: "",
+      VENUE: "",
+      PURPOSE: ""
     };
   }
+  createEvennt = e => {
+    if (this.isRequiredFieldsFilled()) {
+      e.preventDefault();
+      const user = {
+        NAME: this.state.EVENT_ID,
+        TITLE: this.state.TITLE,
+        COMPANY: this.state.COMPANY,
+        BIO: this.state.BIO,
+        LINKEDIN: this.state.LINKEDIN,
+        FACEBOOK: this.state.FACEBOOK,
+        TWITTER: this.state.TWITTER,
+        EMAIL: this.state.EMAIL,
+        EVENT_ID: this.state.EVENT_ID
+      };
+      axios
+        .post(
+          `https://kunektapi.azurewebsites.net/api/attendees/` +
+            this.state.EVENT_ID,
+          user
+        )
+        .then(
+          res => {
+            console.log(res.data);
+            this.resetState();
+            this.displayMessageFor("success");
+          },
+          err => {
+            this.displayMessageFor("request failure");
+          }
+        );
+      this.displayMessageFor("waiting");
+    } else {
+      this.displayMessageFor("failure");
+    }
+  };
+
   handleText = e => {};
   render() {
     return (

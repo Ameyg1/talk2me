@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import KTextField from "../../../Common/TextField";
+import logo from "../../../../assets/images/icon_Large.png";
 import "./EnterEvent.css";
 
 export default class EnterEvent extends React.Component {
@@ -108,7 +109,9 @@ export default class EnterEvent extends React.Component {
     } else {
       return (
         <div className="lower-half-tour">
-          <div className="kunekt-tour"></div>
+          <div className="kunekt-tour">
+            <img src={logo} className="kunekt-logo" alt="New to Kunekt 2" />
+          </div>
           <button
             id="join-event"
             className="sb-btn"

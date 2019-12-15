@@ -136,42 +136,50 @@ export default class UsersList extends Component {
   };
 
   renderUsersList() {
-    return (
-      <div>
-        <List className={this.useStyles.root}>
-          {this.state.Attendees.map(person => {
-            return (
-              <div key={person.ID}>
-                <ListItem alignItems="flex-start">
-                  <ListItemAvatar>
-                    <UserAvatar size="48" name={person.NAME} />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={person.NAME}
-                    secondary={
-                      <label>
-                        <span>
-                          {person.TITLE}
-                          <span>, {person.COMPANY}</span>{" "}
-                        </span>
-                        <label>{person.BIO} </label>
+    if (this.state.hasReceivedList && this.state.Attendees.length === 0) {
+      return (
+        <div style={{ color: "gray", textAlign: "center" }}>
+          Attendees are yet to register.
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <List className={this.useStyles.root}>
+            {this.state.Attendees.map(person => {
+              return (
+                <div key={person.ID}>
+                  <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                      <UserAvatar size="48" name={person.NAME} />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={person.NAME}
+                      secondary={
                         <label>
-                          {this.addAnchorFor(person.EMAIL, "email")}
-                          {this.addAnchorFor(person.FACEBOOK, "facebook")}
-                          {this.addAnchorFor(person.TWITTER, "twitter")}
-                          {this.addAnchorFor(person.LINKEDIN, "linkedIn")}
+                          <span>
+                            {person.TITLE}
+                            <span>, {person.COMPANY}</span>{" "}
+                          </span>
+                          <label>{person.BIO} </label>
+                          <label>
+                            {this.addAnchorFor(person.EMAIL, "email")}
+                            {this.addAnchorFor(person.FACEBOOK, "facebook")}
+                            {this.addAnchorFor(person.TWITTER, "twitter")}
+                            {this.addAnchorFor(person.LINKEDIN, "linkedIn")}
+                          </label>
                         </label>
-                      </label>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />{" "}
-              </div>
-            );
-          })}
-        </List>
-      </div>
-    );
+                      }
+                    />
+                  </ListItem>
+                  <Divider variant="inset" component="li" />{" "}
+                </div>
+              );
+            })}
+          </List>
+        </div>
+      );
+    }
   }
 
   render() {
