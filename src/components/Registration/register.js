@@ -142,11 +142,6 @@ class RegistrationForm extends Component {
     }
   };
 
-  setStateForEventId = async eventid => {
-    await this.setState({ EVENT_ID: eventid });
-    console.log("EVENT ID is Set to: " + this.state.EVENT_ID);
-  };
-
   /**
    * Decides which message to display.
    * @param status (possible options: success | waiting | failure)
@@ -307,8 +302,6 @@ class RegistrationForm extends Component {
     const setStyleForComponent = styleName => {
       return isMobile ? styleName : styleName.concat("-desktop");
     };
-
-    this.setStateForEventId(this.props.eventid);
 
     return (
       <div className="container">
