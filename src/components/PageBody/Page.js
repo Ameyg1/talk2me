@@ -31,7 +31,10 @@ export default class Page extends React.Component {
   render() {
     return (
       <div>
-        {this.state.isEventDisplayed ? (
+        {console.log("URL: " + window.location.href)}
+        {this.state.isEventDisplayed &&
+        window.location.href ===
+          "https://master.d2ymg4og9qeqjh.amplifyapp.com/" ? (
           <EventPopup
             closePopup={this.popup.bind(this)}
             eventId={this.setEventId}
