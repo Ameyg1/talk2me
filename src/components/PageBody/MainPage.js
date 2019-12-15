@@ -17,7 +17,7 @@ export default class MainPage extends React.Component {
     return (
       <Switch>
         <Route exact path="/">
-          <UsersList eventid={this.props.withEventId} />
+          <UsersList />
         </Route>
         <Route path="/profile">
           <RegistrationForm />

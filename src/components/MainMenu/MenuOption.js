@@ -4,11 +4,12 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import EventIcon from "@material-ui/icons/Event";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import MenuItem from "@material-ui/core/MenuItem";
+import env_variable from "../../Reusables/EnvironmentVariables";
 
 class MenuOption extends React.Component {
   refreshPage = () => {
     window.parent.location.replace(
-      "https://master.d2ymg4og9qeqjh.amplifyapp.com" + this.props.renderLink
+      env_variable.PROD_URL + this.props.renderLink
     );
   };
 

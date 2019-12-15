@@ -18,7 +18,7 @@ export default class UsersList extends Component {
     super(props);
     this.state = {
       Attendees: [],
-      EVENT_ID: this.props.eventid
+      EVENT_ID: window.localStorage.getItem("eventid")
     };
   }
 
@@ -31,6 +31,7 @@ export default class UsersList extends Component {
             this.state.EVENT_ID
         )
         .then(response => {
+          console.log("Attendees:");
           console.log(JSON.stringify(response.data.response));
           this.setState({
             Attendees: response.data.response
