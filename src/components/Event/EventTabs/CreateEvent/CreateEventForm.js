@@ -119,7 +119,7 @@ export default class CreateEventForm extends React.Component {
           >
             GET QR CODE
           </button>
-          <div style={{ padding: "20px" }}></div>
+          <div style={{ padding: "5px" }}></div>
         </div>
       </div>
     );
