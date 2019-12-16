@@ -9,7 +9,7 @@ export default class ShareEvent extends React.Component {
   render() {
     return (
       <div>
-        <label>Share Event</label>
+        <label>DEVELOPMENT IN PROGRESS</label>
       </div>
     );
   }

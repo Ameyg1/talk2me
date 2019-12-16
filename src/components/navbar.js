@@ -113,7 +113,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div className={classes.grow}>
+    <div>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
