@@ -10,7 +10,7 @@ export default class EventPopUp extends React.Component {
     return (
       <div className="popup">
         <div className="popup_inner">
-          <Tabs>
+          <Tabs style={{ height: "80%", width: "100%" }}>
             <TabList className="tab-list">
               <Tab className="tab-button">Enter Event</Tab>
               <Tab className="tab-button">Create Event</Tab>

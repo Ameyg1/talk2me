@@ -114,13 +114,6 @@ export default class CreateEventForm extends React.Component {
           </button>
           <div style={{ padding: "20px" }}></div>
         </div>
-        {/* {this.state.modalisOpen ? (
-          <Modal
-            text="Your Data"
-            {...this.state}
-            closeModal={this.toggleModal}
-          />
-        ) : null} */}
       </div>
     );
   }
