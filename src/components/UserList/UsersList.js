@@ -12,6 +12,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import "./UsersList.css";
 
 export default class UsersList extends Component {
   constructor(props) {
@@ -68,6 +69,9 @@ export default class UsersList extends Component {
           },
           error => {
             console.log("TODO: Handle GetUserList error");
+            this.setState({
+              hasReceivedList: false
+            });
           }
         );
     }
@@ -135,16 +139,37 @@ export default class UsersList extends Component {
     }
   };
 
+  resetEvent = () => {
+    window.localStorage.removeItem("eventid");
+    window.location.reload();
+  };
+
+  renderEventInfo() {
+    if (this.state.hasReceivedList) {
+      return (
+        <div className="event-info-container">
+          <label className="event-name">{this.state.event.name}</label>
+          <button className="reset-event" onClick={this.resetEvent}>
+            Not My Event
+          </button>
+        </div>
+      );
+    }
+  }
+
   renderUsersList() {
     if (this.state.hasReceivedList && this.state.Attendees.length === 0) {
       return (
-        <div style={{ color: "gray", textAlign: "center" }}>
+        <div
+          className="Users-list-container"
+          style={{ color: "gray", textAlign: "center" }}
+        >
           Attendees are yet to register.
         </div>
       );
     } else {
       return (
-        <div>
+        <div className="users-list-container">
           <List className={this.useStyles.root}>
             {this.state.Attendees.map(person => {
               return (
@@ -185,6 +210,11 @@ export default class UsersList extends Component {
   render() {
     this.getEvent();
     this.getUsersList();
-    return this.renderUsersList();
+    return (
+      <div className="attedees-page-container">
+        {this.renderEventInfo()}
+        {this.renderUsersList()}
+      </div>
+    );
   }
 }

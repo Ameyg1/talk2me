@@ -24,14 +24,7 @@ export default class CreateEventForm extends React.Component {
   }
 
   createEvent = e => {
-    console.log("In");
-    console.log(
-      this.state.EVENT_NAME && this.state.ORG_EMAIL && this.state.ORGANISER
-        ? true
-        : false
-    );
     if (this.isRequiredFieldsFilled()) {
-      console.log("In again");
       e.preventDefault();
       const event = {
         EVENT_NAME: this.state.EVENT_NAME,
@@ -41,18 +34,17 @@ export default class CreateEventForm extends React.Component {
         PURPOSE: this.state.PURPOSE
       };
       axios.post(`https://kunektapi.azurewebsites.net/api/event`, event).then(
-        async res => {
-          await console.log(res.data.response.insertId);
-          // await console.log(res.data.response[0].insertId);
-          // this.displayMessageFor("success");
+        res => {
+          console.log(res.data.response.insertId);
+          window.localStorage.setItem("eventid", res.data.response.insertId);
         },
         err => {
-          // this.displayMessageFor("request failure");
+          // TODO: handle failure
         }
       );
-      // this.displayMessageFor("waiting");
+      // TODO: handle wait
     } else {
-      // this.displayMessageFor("failure");
+      // TODO: fill up mandatory fields
     }
   };
 
