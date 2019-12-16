@@ -55,7 +55,7 @@ export default class Page extends React.Component {
   };
 
   render() {
-    const genericURL = env_variable.LOCAL_URL;
+    const genericURL = env_variable.PROD_URL;
     if (window.location.href.length > genericURL.length + 1) {
       const appendedString = window.location.href.substring(
         genericURL.length + 1
