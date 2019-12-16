@@ -150,6 +150,7 @@ label {
   display: flex;
   flex-direction: row;
   background-color: rgb(219, 219, 219);
+  width: 100%;
 }
 .prefieldLink {
   color: rgb(73, 73, 73);
@@ -170,4 +171,8 @@ label {
 
 .embeddedButton {
   flex: 1;
+}
+
+.k-text-field {
+  width: 100%;
 }

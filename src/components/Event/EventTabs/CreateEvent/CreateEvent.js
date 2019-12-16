@@ -35,7 +35,7 @@ export default class CreateEvent extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="create-event-container">
         {this.state.isCreateEventFormDisplayed ? (
           <CreateEventForm
             onCompletion={this.handlePageNavigation.bind(this)}

@@ -127,7 +127,7 @@ export default class EnterEvent extends React.Component {
 
   render() {
     return (
-      <div style={{ padding: "20px" }}>
+      <div className="enter-event-container">
         <div>
           <KTextField
             fieldTitle="Enter Event ID"

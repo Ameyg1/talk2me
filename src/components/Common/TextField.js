@@ -33,7 +33,7 @@ export default class KTextField extends React.Component {
             value={this.props.value}
             name={this.props.fieldName}
             id="socialTextField"
-            className={this.props.className}
+            className="k-text-field"
             onChange={this.props.onChange}
           />
         </label>
@@ -46,7 +46,7 @@ export default class KTextField extends React.Component {
             value={this.props.value}
             name={this.props.fieldName}
             id="textFieldOnTheLeft"
-            className={this.props.className}
+            className="k-text-field"
             onChange={this.props.onChange}
           />
           <button
@@ -65,7 +65,7 @@ export default class KTextField extends React.Component {
           value={this.props.value}
           name={this.props.fieldName}
           id={this.props.fieldName}
-          className={this.props.className}
+          className="k-text-field"
           onChange={this.props.onChange}
         />
       );

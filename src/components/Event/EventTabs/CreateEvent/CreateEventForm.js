@@ -11,33 +11,36 @@ export default class CreateEventForm extends React.Component {
       EVENT_ID: "",
       EVENT_NAME: "",
       ORGANISER: "",
+      ORG_EMAIL: "",
       VENUE: "",
       PURPOSE: ""
     };
   }
+
+  /** Checks if mandatory fields are filled */
+  isRequiredFieldsFilled() {
+    return this.state.NAME && this.state.TITLE && this.state.EMAIL;
+  }
+
   createEvennt = e => {
     if (this.isRequiredFieldsFilled()) {
       e.preventDefault();
-      const user = {
-        NAME: this.state.EVENT_ID,
-        TITLE: this.state.TITLE,
-        COMPANY: this.state.COMPANY,
-        BIO: this.state.BIO,
-        LINKEDIN: this.state.LINKEDIN,
-        FACEBOOK: this.state.FACEBOOK,
-        TWITTER: this.state.TWITTER,
-        EMAIL: this.state.EMAIL,
-        EVENT_ID: this.state.EVENT_ID
+      const event = {
+        EVENT_ID: this.state.EVENT_ID,
+        EVENT_NAME: this.state.EVENT_NAME,
+        ORGANISER: this.state.ORGANISER,
+        ORG_EMAIL: this.state.ORG_EMAIL,
+        VENUE: this.state.VENUE,
+        PURPOSE: this.state.PURPOSE
       };
       axios
         .post(
-          `https://kunektapi.azurewebsites.net/api/attendees/` +
+          `https://kunektapi.azurewebsites.net/api/event/` +
             this.state.EVENT_ID,
-          user
+          event
         )
         .then(
           res => {
-            console.log(res.data);
             this.resetState();
             this.displayMessageFor("success");
           },
