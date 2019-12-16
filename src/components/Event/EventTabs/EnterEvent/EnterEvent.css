@@ -75,4 +75,5 @@ input:focus {
   height: 83%;
   width: 85%;
   padding: 20px;
+  overflow: scroll;
 }
