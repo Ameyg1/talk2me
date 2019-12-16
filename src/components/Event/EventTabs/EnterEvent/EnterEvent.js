@@ -143,6 +143,7 @@ export default class EnterEvent extends React.Component {
         </div>
         <div style={{ padding: "10px" }} />
         {this.changeLowerUI(this.state.ui.isEventDisplayed)}
+        <div style={{ padding: "20px" }}></div>
       </div>
     );
   }

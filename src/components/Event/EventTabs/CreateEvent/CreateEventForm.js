@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import KTextField from "../../../Common/TextField";
-import Modal from "../../../Registration/modal";
 import "./CreateEvent.css";
 
 export default class CreateEventForm extends React.Component {
@@ -113,6 +112,7 @@ export default class CreateEventForm extends React.Component {
           <button className="sb-btn" type="submit" onClick={this.createEvent}>
             SUBMIT
           </button>
+          <div style={{ padding: "20px" }}></div>
         </div>
         {/* {this.state.modalisOpen ? (
           <Modal
