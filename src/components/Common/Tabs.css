@@ -33,6 +33,6 @@
 
 .react-tabs__tab-panel--selected {
   overflow: scroll;
-  height: 100%;
-  width: 100%;
+  height: 95%;
+  width: 97%;
 }
