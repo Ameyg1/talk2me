@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import KTextField from "../../../Common/TextField";
+import env_variable from "../../../../Reusables/EnvironmentVariables";
 import "./CreateEvent.css";
 
 export default class CreateEventForm extends React.Component {
@@ -33,7 +34,7 @@ export default class CreateEventForm extends React.Component {
         VENUE: this.state.VENUE,
         PURPOSE: this.state.PURPOSE
       };
-      axios.post(`https://kunektapi.azurewebsites.net/api/event`, event).then(
+      axios.post(env_variable.BACKEND_URL + `/api/event`, event).then(
         res => {
           console.log(res.data.response.insertId);
           window.localStorage.setItem("eventid", res.data.response.insertId);

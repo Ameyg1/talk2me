@@ -3,6 +3,7 @@ import axios from "axios";
 import KTextField from "../../../Common/TextField";
 import logo from "../../../../assets/images/icon_Large.png";
 import "./EnterEvent.css";
+import env_variable from "../../../../Reusables/EnvironmentVariables";
 
 export default class EnterEvent extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class EnterEvent extends React.Component {
         EVENT_ID: this.state.EVENT_ID
       };
       axios
-        .post(`https://kunektapi.azurewebsites.net/api/event/validate`, eventId)
+        .post(env_variable.BACKEND_URL + `/api/event/validate`, eventId)
         .then(
           res => {
             if (res.data.response.length < 1) {
@@ -123,6 +124,10 @@ export default class EnterEvent extends React.Component {
         </div>
       );
     }
+  }
+
+  takeATour() {
+    window.parent.location.replace("");
   }
 
   render() {

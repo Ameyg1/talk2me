@@ -13,6 +13,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "./UsersList.css";
+import env_variable from "../../Reusables/EnvironmentVariables";
 
 export default class UsersList extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class UsersList extends Component {
         EVENT_ID: this.state.EVENT_ID
       };
       await axios
-        .post(`https://kunektapi.azurewebsites.net/api/event/validate`, eventId)
+        .post(env_variable.BACKEND_URL + `/api/event/validate`, eventId)
         .then(
           res => {
             if (res.data.response.length < 1) {
@@ -55,10 +56,7 @@ export default class UsersList extends Component {
   getUsersList = async () => {
     if (!this.state.hasReceivedList) {
       await axios
-        .get(
-          "https://kunektapi.azurewebsites.net/api/attendees/" +
-            this.state.EVENT_ID
-        )
+        .get(env_variable.BACKEND_URL + "/api/attendees/" + this.state.EVENT_ID)
         .then(
           response => {
             this.setState({

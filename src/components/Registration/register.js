@@ -7,6 +7,7 @@ import MessageBox from "../Common/MessageBox";
 import socialPlatformURL, {
   socialPlatformHomeURL
 } from "../../Reusables/Constants";
+import env_variable from "../../Reusables/EnvironmentVariables";
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -126,8 +127,7 @@ class RegistrationForm extends Component {
       };
       axios
         .post(
-          `https://kunektapi.azurewebsites.net/api/attendees/` +
-            this.state.EVENT_ID,
+          env_variable.BACKEND_URL + `/api/attendees/` + this.state.EVENT_ID,
           user
         )
         .then(

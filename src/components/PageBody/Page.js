@@ -34,7 +34,7 @@ export default class Page extends React.Component {
       EVENT_ID: appendedString
     };
     await axios
-      .post(`https://kunektapi.azurewebsites.net/api/event/validate`, eventId)
+      .post(env_variable.BACKEND_URL + `/api/event/validate`, eventId)
       .then(
         res => {
           if (res.data.response.length !== 0) {
