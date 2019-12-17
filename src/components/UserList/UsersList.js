@@ -182,7 +182,9 @@ export default class UsersList extends Component {
                         <label>
                           <span>
                             {person.TITLE}
-                            <span>, {person.COMPANY}</span>{" "}
+                            <span>
+                              {person.COMPANY ? ", " + person.COMPANY : null}
+                            </span>{" "}
                           </span>
                           <label>{person.BIO} </label>
                           <label>

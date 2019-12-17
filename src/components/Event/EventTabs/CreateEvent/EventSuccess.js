@@ -30,7 +30,7 @@ export default class EventSuccess extends React.Component {
           type="submit"
           onClick={this.props.onCompletion}
         >
-          SUBMIT
+          SHARE WITH ATTENDEES
         </button>
       </div>
     );
