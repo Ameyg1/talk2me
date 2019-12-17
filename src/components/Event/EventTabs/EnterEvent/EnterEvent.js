@@ -4,6 +4,7 @@ import KTextField from "../../../Common/TextField";
 import logo from "../../../../assets/images/icon_Large.png";
 import "./EnterEvent.css";
 import env_variable from "../../../../Reusables/EnvironmentVariables";
+import { Kunekt_Error } from "../../../../Reusables/Constants";
 
 export default class EnterEvent extends React.Component {
   constructor(props) {
@@ -69,7 +70,11 @@ export default class EnterEvent extends React.Component {
             }
           },
           err => {
-            console.log("Error");
+            if (err.message === "Network Error") {
+              alert(Kunekt_Error.NO_INTERNET);
+            } else {
+              alert(Kunekt_Error.GENERIC_ERROR);
+            }
             this.displayEventData(false);
           }
         );
@@ -117,7 +122,7 @@ export default class EnterEvent extends React.Component {
             id="join-event"
             className="sb-btn"
             type="button"
-            onClick={this.props.onCompletion}
+            onClick={this.takeATour.bind(this)}
           >
             Take a Tour
           </button>
@@ -127,8 +132,42 @@ export default class EnterEvent extends React.Component {
   }
 
   takeATour() {
-    window.parent.location.replace("");
+    this.setState({ EVENT_ID: "100015" });
+    const eventId = {
+      EVENT_ID: "100015"
+    };
+    axios.post(env_variable.BACKEND_URL + `/api/event/validate`, eventId).then(
+      res => {
+        if (res.data.response.length < 1) {
+          this.displayEventData(false);
+          window.localStorage.removeItem("eventid");
+          console.log("Here Error");
+        } else {
+          this.displayEventData(true, res.data.response);
+          window.localStorage.setItem("eventid", this.state.EVENT_ID);
+        }
+      },
+      err => {
+        if (err.message === "Network Error") {
+          alert(Kunekt_Error.NO_INTERNET);
+        } else {
+          alert(Kunekt_Error.GENERIC_ERROR);
+        }
+        this.displayEventData(false);
+      }
+    );
   }
+
+  /**
+   * {"message":"Network Error","name":"Error","stack":"Error: Network Error\n
+   * at createError (http://localhost:3000/static/js/0.chunk.js:13766:15)\n
+   * at XMLHttpRequest.handleError (http://localhost:3000/static/js/0.chunk.js:13309:14)",
+   * "config":{"url":"https://backend.kunekt.co/api/event/validate","method":"post",
+   * "data":"{\"EVENT_ID\":\"100015\"}","headers":{"Accept":"application/json, text/plain,
+   * ","Content-Type":"application/json;charset=utf-8"},"transformRequest":[null],
+   * "transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN",
+   * "xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1}}
+   */
 
   render() {
     return (

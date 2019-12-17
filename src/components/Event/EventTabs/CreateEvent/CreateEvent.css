@@ -168,3 +168,8 @@ label {
   height: 100%;
   width: 100%;
 }
+
+.new-event-container {
+  margin: auto;
+  padding: 20px;
+}

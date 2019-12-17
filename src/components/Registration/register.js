@@ -5,7 +5,8 @@ import "./register.css";
 import axios from "axios";
 import MessageBox from "../Common/MessageBox";
 import socialPlatformURL, {
-  socialPlatformHomeURL
+  socialPlatformHomeURL,
+  Kunekt_Error
 } from "../../Reusables/Constants";
 import env_variable from "../../Reusables/EnvironmentVariables";
 
@@ -137,12 +138,16 @@ class RegistrationForm extends Component {
             this.displayMessageFor("success");
           },
           err => {
-            this.displayMessageFor("request failure");
+            if (err.message === "Network Error") {
+              alert(Kunekt_Error.NO_INTERNET);
+            } else {
+              alert(Kunekt_Error.GENERIC_ERROR);
+            }
           }
         );
       this.displayMessageFor("waiting");
     } else {
-      this.displayMessageFor("failure");
+      this.displayMessageFor("required fields not filled failure");
     }
   };
 

@@ -17,11 +17,13 @@ export default class EventSuccess extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="new-event-container">
         <label>
-          Screenshot the QR Code and copy the URL below for future reference.
+          Copy the URL and the QR Code to share with attendees manually.
         </label>
-        <a href={this.makeURL()}>{this.makeURL()}</a>
+        <a href={this.makeURL()} className="new-event-url">
+          URL FOR YOUR NEW EVENT
+        </a>
         {this.renderQRCode(this.makeURL())}
         <button
           className="sb-btn"
