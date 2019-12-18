@@ -173,3 +173,21 @@ label {
   margin: auto;
   padding: 20px;
 }
+
+#new-event-items {
+  margin-left: auto;
+  margin-right: auto;
+  width: 99%;
+  padding-bottom: 5px;
+  display: flex;
+}
+
+#share-button {
+  margin: auto;
+  width: auto;
+}
+
+.event-info-border {
+  border: 1px solid gray;
+  padding: 10px;
+}

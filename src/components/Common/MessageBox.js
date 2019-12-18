@@ -23,19 +23,42 @@ export default class MessageBox extends React.Component {
   renderMessageText() {
     switch (this.props.status) {
       case "success":
-        return "Great! Your profile is created";
+        return this.props.customMessage
+          ? this.props.customMessage
+          : "Great! Your profile is created";
       case "failure":
-        return "Please fill up the mandatory fields (marked with *)";
+        return this.props.customMessage
+          ? this.props.customMessage
+          : "Please fill up the mandatory fields (marked with *)";
       case "waiting":
-        return "Please wait while we complete your registration...";
+        return this.props.customMessage
+          ? this.props.customMessage
+          : "Please wait while we complete your registration...";
       default:
-        return "Oops, something went wrong. Please try again after sometime.";
+        return this.props.customMessage
+          ? this.props.customMessage
+          : "Oops, something went wrong. Please try again after sometime.";
     }
   }
 
   closeMessageBox = () => {
     this.setState({ displayMessage: false });
   };
+
+  renderCloseButton() {
+    if (this.props.closeButton === "hide") {
+      return null;
+    } else {
+      return (
+        <button
+          className={this.isSuccess("close-button")}
+          onClick={this.closeMessageBox}
+        >
+          X
+        </button>
+      );
+    }
+  }
 
   renderMessageBox() {
     if (this.state.displayMessage) {
@@ -44,12 +67,7 @@ export default class MessageBox extends React.Component {
           <label className={this.isSuccess("message-text")}>
             {this.renderMessageText()}
           </label>
-          <button
-            className={this.isSuccess("close-button")}
-            onClick={this.closeMessageBox}
-          >
-            X
-          </button>
+          {this.renderCloseButton()}
         </div>
       );
     } else {
