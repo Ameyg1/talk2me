@@ -155,6 +155,40 @@ export default class UsersList extends Component {
     }
   }
 
+  renderAttendeeCard(person) {
+    if (person.ID) {
+      return (
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <UserAvatar size="48" name={person.NAME} />
+          </ListItemAvatar>
+          <ListItemText
+            primary={person.NAME}
+            secondary={
+              <label>
+                <span>
+                  {person.TITLE}
+                  <span>
+                    {person.COMPANY ? ", " + person.COMPANY : null}
+                  </span>{" "}
+                </span>
+                <label>{person.BIO} </label>
+                <label>
+                  {this.addAnchorFor(person.EMAIL, "email")}
+                  {this.addAnchorFor(person.FACEBOOK, "facebook")}
+                  {this.addAnchorFor(person.TWITTER, "twitter")}
+                  {this.addAnchorFor(person.LINKEDIN, "linkedIn")}
+                </label>
+              </label>
+            }
+          />
+        </ListItem>
+      );
+    } else if (person.ID === 0) {
+      return <div style={{ padding: "50px" }} />;
+    }
+  }
+
   renderUsersList() {
     if (this.state.hasReceivedList && this.state.Attendees.length === 0) {
       return (
@@ -172,31 +206,7 @@ export default class UsersList extends Component {
             {this.state.Attendees.map(person => {
               return (
                 <div key={person.ID}>
-                  <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                      <UserAvatar size="48" name={person.NAME} />
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={person.NAME}
-                      secondary={
-                        <label>
-                          <span>
-                            {person.TITLE}
-                            <span>
-                              {person.COMPANY ? ", " + person.COMPANY : null}
-                            </span>{" "}
-                          </span>
-                          <label>{person.BIO} </label>
-                          <label>
-                            {this.addAnchorFor(person.EMAIL, "email")}
-                            {this.addAnchorFor(person.FACEBOOK, "facebook")}
-                            {this.addAnchorFor(person.TWITTER, "twitter")}
-                            {this.addAnchorFor(person.LINKEDIN, "linkedIn")}
-                          </label>
-                        </label>
-                      }
-                    />
-                  </ListItem>
+                  {this.renderAttendeeCard(person)}
                   <Divider variant="inset" component="li" />{" "}
                 </div>
               );
