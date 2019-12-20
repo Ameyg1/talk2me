@@ -1,5 +1,5 @@
 export const env_variable = {
-  PROD_URL: "https://master.d2ymg4og9qeqjh.amplifyapp.com",
+  PROD_URL: "https://app.kunekt.co",
   LOCAL_URL: "http://localhost:3000",
   BACKEND_URL: "https://backend.kunekt.co"
 };
