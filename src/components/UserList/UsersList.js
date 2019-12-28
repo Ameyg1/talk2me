@@ -14,6 +14,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "./UsersList.css";
 import env_variable from "../../Reusables/EnvironmentVariables";
+import { border } from "@material-ui/system";
 
 export default class UsersList extends Component {
   constructor(props) {
@@ -199,6 +200,14 @@ export default class UsersList extends Component {
     </Typography>
     );
   }
+  renderpower()
+  {
+    return ( <div style={{marginRight:"20px"}}> <Typography align="right">
+      Powered by <a href="http://3.24.57.218"> Kunekt </a>
+    </Typography>
+    </div>
+    );
+  }
   renderUsersList() {
     if (this.state.hasReceivedList && this.state.Attendees.length === 0) {
       return (
@@ -235,6 +244,7 @@ export default class UsersList extends Component {
         {this.renderEventInfo()}
         {this.renderUsersList()}
         {this.renderattendeeadd()}
+        {this.renderpower()}
       </div>
     );
   }
