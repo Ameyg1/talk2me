@@ -148,7 +148,7 @@ export default class UsersList extends Component {
         <div className="event-info-container">
           <label className="event-name">{this.state.event.name}</label>
           <button className="reset-event" onClick={this.resetEvent}>
-            Not My Event
+            Find Another Event
           </button>
         </div>
       );
