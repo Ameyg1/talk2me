@@ -114,17 +114,17 @@ export default class EnterEvent extends React.Component {
       );
     } else {
       return (
-        <div className="lower-half-tour">
-          <div className="kunekt-tour">
-            <img src={logo} className="kunekt-logo" alt="New to Kunekt 2" />
-          </div>
+        <div className="lower-half-tour" style={{float:'left'}}>
+       {/*   <div className="kunekt-tour">
+           {<img src={logo} className="kunekt-logo" alt="New to Kunekt 2" /> 
+          </div> */}
           <button
             id="join-event"
             className="sb-btn"
             type="button"
             onClick={this.takeATour.bind(this)}
           >
-            Take a Tour
+            Try the Demo
           </button>
         </div>
       );
