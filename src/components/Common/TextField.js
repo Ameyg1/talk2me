@@ -5,9 +5,9 @@ export default class KTextField extends React.Component {
   renderHelpMessage() {
     if (this.props.helpMessage) {
       return (
-        <div className="note" style={{ display: "block" }}>
+        <span className="note" style={{ display: "block" }}>
           {this.props.helpMessage}
-        </div>
+        </span>
       );
     }
   }

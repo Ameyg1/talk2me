@@ -331,7 +331,7 @@ class RegistrationForm extends Component {
               errorMessage={this.errorMessages("NAME")}
             />
             <KTextField
-              fieldTitle="Designation/Title *"
+              fieldTitle="Position/Title at Work *"
               type="text"
               value={this.state.TITLE}
               fieldName="TITLE"
