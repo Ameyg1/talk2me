@@ -181,8 +181,8 @@ export default class EnterEvent extends React.Component {
             fieldName="EVENT_ID"
             embeddedButtonInfo="Search"
             onButtonClick={this.checkEvent}
-            helpMessage="If you know the ID of the Event you want to join, please enter it
-          below to Kunekt to other attendees."
+            helpMessage="Contact your event host if you are not sure about the event ID.
+            To try our demo, use event ID 100015."
           />
         </div>
         <div style={{ padding: "10px" }} />

@@ -5,9 +5,9 @@ export default class KTextField extends React.Component {
   renderHelpMessage() {
     if (this.props.helpMessage) {
       return (
-        <span className="note" style={{ display: "block" }}>
+        <div className="note" style={{ display: "block" }}>
           {this.props.helpMessage}
-        </span>
+        </div>
       );
     }
   }
@@ -48,6 +48,7 @@ export default class KTextField extends React.Component {
             id="textFieldOnTheLeft"
             className="k-text-field"
             onChange={this.props.onChange}
+            placeholder="100015"
           />
           <button
             className="embeddedButton"
