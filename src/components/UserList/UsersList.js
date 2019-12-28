@@ -53,6 +53,9 @@ export default class UsersList extends Component {
     }
   };
 
+  makeURL() {
+    return env_variable.PROD_URL +"/profile";
+  }
   getUsersList = async () => {
     if (!this.state.hasReceivedList) {
       await axios
@@ -185,10 +188,17 @@ export default class UsersList extends Component {
         </ListItem>
       );
     } else if (person.ID === 0) {
-      return <div style={{ padding: "50px" }} />;
+      return  <div style={{ padding: "50px" }} />;
     }
   }
 
+  renderattendeeadd(){
+    return(
+    <Typography align="center">
+      Want to add your business card? <a href={this.makeURL()}>Click Here</a>
+    </Typography>
+    );
+  }
   renderUsersList() {
     if (this.state.hasReceivedList && this.state.Attendees.length === 0) {
       return (
@@ -224,6 +234,7 @@ export default class UsersList extends Component {
       <div className="attedees-page-container">
         {this.renderEventInfo()}
         {this.renderUsersList()}
+        {this.renderattendeeadd()}
       </div>
     );
   }
