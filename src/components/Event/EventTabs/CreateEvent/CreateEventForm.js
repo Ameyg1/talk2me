@@ -120,7 +120,7 @@ export default class CreateEventForm extends React.Component {
           />
           <div className="sb-text">
             By clicking Submit, I agree that I have read and accepted the&nbsp;
-            <a href="TermsandConditions">Terms and Conditions.</a>
+            <a href="https://www.kunekt.co/terms-software/">Terms and Conditions.</a>
           </div>
           {this.state.messageIsDisplayed
             ? this.renderMessage(this.state.messageStatus)
