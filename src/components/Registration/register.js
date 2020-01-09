@@ -359,14 +359,14 @@ class RegistrationForm extends Component {
               style={this.requiredStyle("COMPANY")}
             />
             <KTextField
-              fieldTitle="I need help with..."
+              fieldTitle="Text On Digital Business Card"
               type="textarea"
               value={this.state.BIO}
               fieldName="BIO"
               className={shouldMarkError("BIO") ? "error" : ""}
               onChange={e => this.handleChange(e, "BIO")}
               style={this.requiredStyle("BIO")}
-              helpMessage="Type in upto 100 characters."
+              helpMessage="Type in upto 400 characters."
               helpMessageStyle={helpMessage("BIO")}
             />
             <KTextField
