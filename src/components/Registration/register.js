@@ -359,8 +359,9 @@ class RegistrationForm extends Component {
               style={this.requiredStyle("COMPANY")}
             />
             <KTextField
-              fieldTitle="Text On Digital Business Card"
+              fieldTitle="Text on Digital Business Card"
               type="textarea"
+              placeholder="I need with "
               value={this.state.BIO}
               fieldName="BIO"
               className={shouldMarkError("BIO") ? "error" : ""}
