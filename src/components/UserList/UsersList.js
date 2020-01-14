@@ -203,7 +203,7 @@ export default class UsersList extends Component {
   renderpower()
   {
     return ( <div style={{marginRight:"20px"}}> <Typography align="right">
-      Powered by <a href="http://3.24.57.218"> Kunekt </a>
+      Powered by <a href="https://www.kunekt.co"> Kunekt </a>
     </Typography>
     </div>
     );
