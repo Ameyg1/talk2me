@@ -1,20 +1,12 @@
 import React from "react";
-import QRCode from "qrcode.react";
 import MessageBox from "../../../Common/MessageBox";
 import "./CreateEvent.css";
-import env_variable from "../../../../Reusables/EnvironmentVariables";
+import KunektQRCode from "../../../Common/QRCode/KunektQRCode";
 
 export default class EventSuccess extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-  }
-
-  makeURL() {
-    return env_variable.PROD_URL + "/" + window.localStorage.getItem("eventid");
-  }
-  renderQRCode(url) {
-    return <QRCode value={url} id="new-event-items" />;
   }
   returnEventID(){
     return window.localStorage.getItem("eventid");
@@ -42,7 +34,7 @@ export default class EventSuccess extends React.Component {
             </a>
           </label>
           </div>
-          {this.renderQRCode(this.makeURL())}
+          <KunektQRCode />
           <div style={{ textAlign:"center",padding: "5px" }}>Share this information in your event communications: emails, presentations, flyers.</div>
         {/* <div id="new-event-items">
              <button 

@@ -14,7 +14,8 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "./UsersList.css";
 import env_variable from "../../Reusables/EnvironmentVariables";
-import { border } from "@material-ui/system";
+import UserListFooter from "./UserListFooter";
+import exitEventIcon from "../../assets/icons/UserList/exit-event.png";
 
 export default class UsersList extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export default class UsersList extends Component {
   };
 
   makeURL() {
-    return env_variable.PROD_URL +"/profile";
+    return env_variable.LOCAL_URL + "/profile";
   }
   getUsersList = async () => {
     if (!this.state.hasReceivedList) {
@@ -98,6 +99,7 @@ export default class UsersList extends Component {
           variant="body2"
           className={this.useStyles.inline}
           color="textPrimary"
+          style={{ paddingRight: "3px", paddingTop: "5px" }}
         >
           {this.setIconFor(platformName, platformValue)}
         </Typography>
@@ -115,25 +117,25 @@ export default class UsersList extends Component {
       case "facebook":
         return (
           <a href={`https://www.facebook.com/${platformValue}`}>
-            <FacebookIcon fontSize="small" />
+            <FacebookIcon fontSize="medium" />
           </a>
         );
       case "twitter":
         return (
           <a href={`https://www.twitter.com/${platformValue}`}>
-            <TwitterIcon fontSize="small" />
+            <TwitterIcon fontSize="medium" />
           </a>
         );
       case "linkedIn":
         return (
           <a href={`https://www.linkedin.com/in/${platformValue}`}>
-            <LinkedInIcon fontSize="small" />
+            <LinkedInIcon fontSize="medium" />
           </a>
         );
       case "email":
         return (
           <a href={`mailto:${platformValue}`}>
-            <MailIcon color="primary" fontSize="small" />
+            <MailIcon color="primary" fontSize="medium" />
           </a>
         );
       default:
@@ -146,17 +148,37 @@ export default class UsersList extends Component {
     window.location.reload();
   };
 
+  // Need Refactor
+  goToAddProfile() {
+    window.parent.location.replace(env_variable.LOCAL_URL + "/profile");
+  }
+
   renderEventInfo() {
-    if (this.state.hasReceivedList) {
-      return (
-        <div className="event-info-container">
-          <label className="event-name">{this.state.event.name}</label>
-          <button className="reset-event" onClick={this.resetEvent}>
-            Find Another Event
-          </button>
+    return (
+      <div className="event-info-container">
+        <label className="event-name">{this.state.event.name}</label>
+        <div className="reset-event">
+          <input
+            className="reset-event-button-image"
+            type="image"
+            src={exitEventIcon}
+            alt="Find other event"
+            onClick={this.resetEvent}
+          />
         </div>
-      );
-    }
+      </div>
+    );
+  }
+
+  renderUserListHeader() {
+    return (
+      <div className="list-header-container">
+        <label className="userlist-header">Attendee List</label>
+        <button className="add-profile-button" onClick={this.goToAddProfile}>
+          ADD YOUR PROFILE
+        </button>
+      </div>
+    );
   }
 
   renderAttendeeCard(person) {
@@ -189,33 +211,15 @@ export default class UsersList extends Component {
         </ListItem>
       );
     } else if (person.ID === 0) {
-      return  <div style={{ padding: "50px" }} />;
+      return <div style={{ padding: "50px" }} />;
     }
   }
 
-  renderattendeeadd(){
-    return(
-    <Typography align="center">
-      Want to add your business card? <a href={this.makeURL()}>Click Here</a>
-    </Typography>
-    );
-  }
-  renderpower()
-  {
-    return ( <div style={{marginRight:"20px"}}> <Typography align="right">
-      Powered by <a href="https://www.kunekt.co"> Kunekt </a>
-    </Typography>
-    </div>
-    );
-  }
   renderUsersList() {
     if (this.state.hasReceivedList && this.state.Attendees.length === 0) {
       return (
-        <div
-          className="Users-list-container"
-          style={{ color: "gray", textAlign: "center" }}
-        >
-          Attendees are yet to register.
+        <div className="empty-users-list-container">
+          <div style={{ color: "gray" }}>Attendees are yet to register.</div>
         </div>
       );
     } else {
@@ -235,6 +239,13 @@ export default class UsersList extends Component {
       );
     }
   }
+  renderFooter() {
+    return (
+      <div className="footer-container">
+        <UserListFooter />
+      </div>
+    );
+  }
 
   render() {
     this.getEvent();
@@ -242,9 +253,9 @@ export default class UsersList extends Component {
     return (
       <div className="attedees-page-container">
         {this.renderEventInfo()}
+        {this.renderUserListHeader()}
         {this.renderUsersList()}
-        {this.renderattendeeadd()}
-        {this.renderpower()}
+        {this.renderFooter()}
       </div>
     );
   }

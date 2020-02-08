@@ -312,9 +312,24 @@ class RegistrationForm extends Component {
       return isMobile ? styleName : styleName.concat("-desktop");
     };
 
+    const renderBackButton = () => {
+      return (
+        <div className="back-button-container">
+          <button className="back-button" onClick={goToUserlist}>
+            {"< Back"}
+          </button>
+        </div>
+      );
+    };
+
+    const goToUserlist = () => {
+      window.parent.location.replace(env_variable.LOCAL_URL);
+    };
+
     return (
       <div className="container">
         <div className={setStyleForComponent("register-form")}>
+          {renderBackButton()}
           <div className="title">Create Your Free Account</div>
           {this.state.messageIsDisplayed
             ? this.renderMessage(this.state.messageStatus)
@@ -331,6 +346,15 @@ class RegistrationForm extends Component {
               errorMessage={this.errorMessages("NAME")}
             />
             <KTextField
+              fieldTitle="Email *"
+              type="text"
+              value={this.state.EMAIL}
+              fieldName="EMAIL"
+              className={shouldMarkError("EMAIL") ? "error" : ""}
+              onChange={e => this.handleChange(e, "EMAIL")}
+              style={this.requiredStyle("EMAIL")}
+            />
+            <KTextField
               fieldTitle="Position/Title at Work *"
               type="text"
               value={this.state.TITLE}
@@ -341,16 +365,7 @@ class RegistrationForm extends Component {
               errorMessage={this.errorMessages("TITLE")}
             />
             <KTextField
-              fieldTitle="Email *"
-              type="text"
-              value={this.state.EMAIL}
-              fieldName="EMAIL"
-              className={shouldMarkError("EMAIL") ? "error" : ""}
-              onChange={e => this.handleChange(e, "EMAIL")}
-              style={this.requiredStyle("EMAIL")}
-            />
-            <KTextField
-              fieldTitle="Company"
+              fieldTitle="Organisation"
               type="text"
               value={this.state.COMPANY}
               fieldName="COMPANY"
@@ -412,7 +427,9 @@ class RegistrationForm extends Component {
             <div className="sb-text">
               By clicking Submit, I agree that I have read and accepted
               the&nbsp;
-              <a href="https://www.kunekt.co/terms-software/">Terms and Conditions.</a>
+              <a href="https://www.kunekt.co/terms-software/">
+                Terms and Conditions.
+              </a>
             </div>
             <button
               className="sb-btn"

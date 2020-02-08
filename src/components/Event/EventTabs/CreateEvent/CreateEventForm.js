@@ -110,17 +110,19 @@ export default class CreateEventForm extends React.Component {
             fieldName="VENUE"
             onChange={e => this.handleText(e, "VENUE")}
           />
-          <KTextField
+          {/* <KTextField
             fieldTitle="This meetup is for..."
             type="textarea"
             value={this.state.PURPOSE}
             fieldName="PURPOSE"
             onChange={e => this.handleText(e, "PURPOSE")}
             helpMessage="Type in upto 100 characters."
-          />
+          /> */}
           <div className="sb-text">
             By clicking Submit, I agree that I have read and accepted the&nbsp;
-            <a href="https://www.kunekt.co/terms-software/">Terms and Conditions.</a>
+            <a href="https://www.kunekt.co/terms-software/">
+              Terms and Conditions.
+            </a>
           </div>
           {this.state.messageIsDisplayed
             ? this.renderMessage(this.state.messageStatus)
