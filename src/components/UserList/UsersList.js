@@ -56,7 +56,7 @@ export default class UsersList extends Component {
   };
 
   makeURL() {
-    return env_variable.LOCAL_URL + "/profile";
+    return env_variable.PROD_URL + "/profile";
   }
   getUsersList = async () => {
     if (!this.state.hasReceivedList) {
@@ -150,7 +150,7 @@ export default class UsersList extends Component {
 
   // Need Refactor
   goToAddProfile() {
-    window.parent.location.replace(env_variable.LOCAL_URL + "/profile");
+    window.parent.location.replace(env_variable.PROD_URL + "/profile");
   }
 
   renderEventInfo() {

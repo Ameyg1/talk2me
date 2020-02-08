@@ -9,9 +9,7 @@ export default class UserListFooter extends React.Component {
   }
 
   makeURL() {
-    return (
-      env_variable.LOCAL_URL + "/" + window.localStorage.getItem("eventid")
-    );
+    return env_variable.PROD_URL + "/" + window.localStorage.getItem("eventid");
   }
   renderURL() {
     return (
@@ -31,7 +29,7 @@ export default class UserListFooter extends React.Component {
     return (
       <label style={{ textAlign: "center", paddingBottom: "10px" }}>
         <a
-          href={env_variable.LOCAL_URL}
+          href={env_variable.PROD_URL}
           onClick={this.resetEvent}
           className=""
           style={{ textAlign: "center", paddingBottom: "10px" }}
@@ -45,7 +43,7 @@ export default class UserListFooter extends React.Component {
     return (
       <label style={{ textAlign: "center", paddingBottom: "10px" }}>
         <a
-          href={env_variable.LOCAL_URL}
+          href={env_variable.PROD_URL}
           onClick={this.resetEvent}
           className=""
           style={{ textAlign: "center", paddingBottom: "10px" }}
@@ -59,14 +57,14 @@ export default class UserListFooter extends React.Component {
   //   return (
   //     <div align="center">
   //       Want to add your business card?{" "}
-  //       <a href={env_variable.LOCAL_URL + "/profile"}>Click Here</a>
+  //       <a href={env_variable.PROD_URL + "/profile"}>Click Here</a>
   //     </div>
   //   );
   // }
   renderpower() {
     return (
       <label style={{ textAlign: "center", paddingBottom: "10px" }}>
-        Powered by <a href={env_variable.LOCAL_URL}> Kunekt </a>
+        Powered by <a href={env_variable.PROD_URL}> Kunekt </a>
       </label>
     );
   }

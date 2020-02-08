@@ -323,7 +323,7 @@ class RegistrationForm extends Component {
     };
 
     const goToUserlist = () => {
-      window.parent.location.replace(env_variable.LOCAL_URL);
+      window.parent.location.replace(env_variable.PROD_URL);
     };
 
     return (

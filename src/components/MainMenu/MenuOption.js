@@ -9,7 +9,7 @@ import env_variable from "../../Reusables/EnvironmentVariables";
 class MenuOption extends React.Component {
   refreshPage = () => {
     window.parent.location.replace(
-      env_variable.LOCAL_URL + this.props.renderLink
+      env_variable.PROD_URL + this.props.renderLink
     );
   };
 
