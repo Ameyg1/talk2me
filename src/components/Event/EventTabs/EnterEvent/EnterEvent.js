@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import KTextField from "../../../Common/TextField";
 import logo from "../../../../assets/images/icon_Large.png";
-import "./EnterEvent.css";
+import "../../../../config/stylesheets/defaults/EnterEvent.css";
+import "../../../../config/stylesheets/customisables/colors.css";
 import env_variable from "../../../../Reusables/EnvironmentVariables";
 import { Kunekt_Error } from "../../../../Reusables/Constants";
 
@@ -84,8 +85,8 @@ export default class EnterEvent extends React.Component {
   changeLowerUI(isEventDisplayed) {
     if (isEventDisplayed) {
       return (
-        <div className="lower-half">
-          <div className="event-details">
+        <div className="enter-event-lower-half">
+          <div className="enter-event-event-details">
             <label style={{ fontSize: "15px", textDecoration: "underline" }}>
               Your Event Details:
             </label>
@@ -104,7 +105,7 @@ export default class EnterEvent extends React.Component {
           </div>
           <button
             id="join-event"
-            className="sb-btn"
+            className="enter-event-kunekt-button"
             type="button"
             onClick={this.props.onCompletion}
           >
@@ -114,13 +115,13 @@ export default class EnterEvent extends React.Component {
       );
     } else {
       return (
-        <div className="lower-half-tour" style={{float:'left'}}>
-       {/*   <div className="kunekt-tour">
-           {<img src={logo} className="kunekt-logo" alt="New to Kunekt 2" /> 
+        <div className="enter-event-lower-half-tour" style={{ float: "left" }}>
+          {/*   <div className="enter-event-kunekt-tour">
+           {<img src={logo} className="enter-event-kunekt-logo" alt="New to Kunekt 2" /> 
           </div> */}
           <button
             id="join-event"
-            className="sb-btn"
+            className="enter-event-kunekt-button"
             type="button"
             onClick={this.takeATour.bind(this)}
           >

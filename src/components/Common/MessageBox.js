@@ -1,5 +1,6 @@
 import React from "react";
-import "./MessageBox.css";
+import "../../config/stylesheets/defaults/MessageBox.css";
+import "../../config/stylesheets/customisables/colors.css";
 
 export default class MessageBox extends React.Component {
   constructor(props) {

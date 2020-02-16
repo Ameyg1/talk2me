@@ -12,10 +12,11 @@ import MailIcon from "@material-ui/icons/Mail";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import "./UsersList.css";
+import "../../config/stylesheets/defaults/UsersList.css";
 import env_variable from "../../Reusables/EnvironmentVariables";
 import UserListFooter from "./UserListFooter";
 import exitEventIcon from "../../assets/icons/UserList/exit-event.png";
+import BusinessCard from "../UserList/BusinessCard/BusinessCard";
 
 export default class UsersList extends Component {
   constructor(props) {
@@ -99,7 +100,7 @@ export default class UsersList extends Component {
           variant="body2"
           className={this.useStyles.inline}
           color="textPrimary"
-          style={{ paddingRight: "3px", paddingTop: "5px" }}
+          style={{ paddingRight: "8px", paddingTop: "5px" }}
         >
           {this.setIconFor(platformName, platformValue)}
         </Typography>
@@ -175,7 +176,7 @@ export default class UsersList extends Component {
       <div className="list-header-container">
         <label className="userlist-header">Attendee List</label>
         <button className="add-profile-button" onClick={this.goToAddProfile}>
-          ADD YOUR PROFILE
+          ADD PROFILE
         </button>
       </div>
     );
@@ -229,7 +230,8 @@ export default class UsersList extends Component {
             {this.state.Attendees.map(person => {
               return (
                 <div key={person.ID}>
-                  {this.renderAttendeeCard(person)}
+                  <BusinessCard details={person} />
+                  {/* {this.renderAttendeeCard(person)} */}
                   <Divider variant="inset" component="li" />{" "}
                 </div>
               );

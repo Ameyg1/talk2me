@@ -1,5 +1,5 @@
 import React from "react";
-import "../Registration/register.css";
+import "../../config/stylesheets/defaults/register.css";
 
 export default class KTextField extends React.Component {
   renderHelpMessage() {

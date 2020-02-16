@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./modal";
 import KTextField from "../Common/TextField";
-import "./register.css";
+import "../../config/stylesheets/defaults/register.css";
 import axios from "axios";
 import MessageBox from "../Common/MessageBox";
 import socialPlatformURL, {

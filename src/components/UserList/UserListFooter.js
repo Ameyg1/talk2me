@@ -14,7 +14,8 @@ export default class UserListFooter extends React.Component {
   renderURL() {
     return (
       <label style={{ textAlign: "center", paddingBottom: "10px" }}>
-        URL: {this.makeURL().substring(8)}
+        {"URL: "}
+        <a href={this.makeURL()}>{this.makeURL().substring(8)}</a>
       </label>
     );
   }

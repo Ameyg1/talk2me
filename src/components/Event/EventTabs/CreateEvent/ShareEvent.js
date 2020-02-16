@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../Registration/register.css";
 
 export default class ShareEvent extends React.Component {
   constructor(props) {

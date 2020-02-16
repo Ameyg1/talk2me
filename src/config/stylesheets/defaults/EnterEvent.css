@@ -1,6 +1,4 @@
-.sb-btn {
-  background-color: #333333;
-  color: #ffffff;
+.enter-event-kunekt-button {
   width: 70px;
   height: 30px;
   outline: none;
@@ -9,33 +7,30 @@
   font-weight: bold;
   cursor: pointer;
 }
-.form span.required {
+.enter-event-form span.required {
   display: block;
 }
-.textfield {
+.enter-event-textfield {
   padding: 0px;
   margin: 0px;
   display: flex;
   flex-direction: row;
-  background-color: rgb(219, 219, 219);
 }
-.lower-half {
+.enter-event-lower-half {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   height: 90px;
-  background-color: transparent;
 }
 
-.lower-half-tour {
+.enter-event-lower-half-tour {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   height: 90px;
-  background-color: transparent;
 }
 
-.event-details {
+.enter-event-event-details {
   flex: 18;
 }
 
@@ -47,12 +42,12 @@
   margin-left: auto;
 }
 
-.kunekt-tour {
+.enter-event-kunekt-tour {
   flex: 18;
   padding-right: 5px;
 }
 
-.kunekt-logo {
+.enter-event-kunekt-logo {
   max-height: 200px;
   max-width: 180px;
   height: auto;

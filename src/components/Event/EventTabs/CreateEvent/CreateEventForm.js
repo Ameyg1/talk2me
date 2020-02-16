@@ -4,7 +4,8 @@ import KTextField from "../../../Common/TextField";
 import MessageBox from "../../../Common/MessageBox";
 import env_variable from "../../../../Reusables/EnvironmentVariables";
 import { Kunekt_Error } from "../../../../Reusables/Constants";
-import "./CreateEvent.css";
+import "../../../../config/stylesheets/defaults/CreateEvent.css";
+import "../../../../config/stylesheets/customisables/colors.css";
 
 export default class CreateEventForm extends React.Component {
   constructor(props) {
@@ -80,8 +81,8 @@ export default class CreateEventForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="form">
+      <div className="create-event-container">
+        <div className="create-event-form">
           <KTextField
             fieldTitle="Event Name *"
             type="text"
@@ -118,7 +119,7 @@ export default class CreateEventForm extends React.Component {
             onChange={e => this.handleText(e, "PURPOSE")}
             helpMessage="Type in upto 100 characters."
           /> */}
-          <div className="sb-text">
+          <div className="create-event-sb-text">
             By clicking Submit, I agree that I have read and accepted the&nbsp;
             <a href="https://www.kunekt.co/terms-software/">
               Terms and Conditions.
@@ -127,11 +128,15 @@ export default class CreateEventForm extends React.Component {
           {this.state.messageIsDisplayed
             ? this.renderMessage(this.state.messageStatus)
             : null}
-          <button className="sb-btn" type="submit" onClick={this.createEvent}>
+          <button
+            className="create-event-sb-btn"
+            type="submit"
+            onClick={this.createEvent}
+          >
             SUBMIT
           </button>
           {/*<button
-            className="sb-btn"
+            className="create-event-sb-btn"
             type="submit"
             onClick={this.props.onCompletion}
           >

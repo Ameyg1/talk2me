@@ -1,8 +1,8 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import EnterEvent from "./EventTabs/EnterEvent/EnterEvent";
-import "./Popup.css";
-import "../Common/Tabs.css";
+import "../../config/stylesheets/defaults/Popup.css";
+import "../../config/stylesheets/defaults/Tabs.css";
 import CreateEvent from "./EventTabs/CreateEvent/CreateEvent";
 
 export default class EventPopUp extends React.Component {
