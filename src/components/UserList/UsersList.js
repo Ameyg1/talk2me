@@ -50,7 +50,7 @@ export default class UsersList extends Component {
             }
           },
           err => {
-            console.log("TODO: Service Error");
+            console.log("TODO: Service Error from UserList");
           }
         );
     }

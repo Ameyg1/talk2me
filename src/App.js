@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/navbar";
 import Page from "./components/PageBody/Page";
 
 function App() {

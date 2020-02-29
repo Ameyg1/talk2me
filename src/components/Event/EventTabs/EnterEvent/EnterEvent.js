@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import KTextField from "../../../Common/TextField";
-import logo from "../../../../assets/images/icon_Large.png";
 import "../../../../config/stylesheets/defaults/EnterEvent.css";
 import "../../../../config/stylesheets/customisables/colors.css";
 import env_variable from "../../../../Reusables/EnvironmentVariables";
@@ -158,17 +157,6 @@ export default class EnterEvent extends React.Component {
       }
     );
   }
-
-  /**
-   * {"message":"Network Error","name":"Error","stack":"Error: Network Error\n
-   * at createError (http://localhost:3000/static/js/0.chunk.js:13766:15)\n
-   * at XMLHttpRequest.handleError (http://localhost:3000/static/js/0.chunk.js:13309:14)",
-   * "config":{"url":"https://backend.kunekt.co/api/event/validate","method":"post",
-   * "data":"{\"EVENT_ID\":\"100015\"}","headers":{"Accept":"application/json, text/plain,
-   * ","Content-Type":"application/json;charset=utf-8"},"transformRequest":[null],
-   * "transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN",
-   * "xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1}}
-   */
 
   render() {
     return (

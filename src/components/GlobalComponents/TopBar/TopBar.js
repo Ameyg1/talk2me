@@ -1,5 +1,4 @@
 import React from "react";
-import env_variable from "../../Reusables/EnvironmentVariables";
 import exitEventIcon from "../../../assets/icons/UserList/exit-event.png";
 
 export default class TopBar extends React.Component {
