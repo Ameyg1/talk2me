@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 import RegistrationForm from "../Registration/register";
 import UsersList from "../UserList/UsersList";
+import Admin from "../Admin/Admin";
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -21,6 +22,9 @@ export default class MainPage extends React.Component {
         </Route>
         <Route path="/profile">
           <RegistrationForm />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Switch>
     );

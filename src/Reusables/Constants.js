@@ -11,4 +11,23 @@ export const Kunekt_Error = {
     "Looks like your internet is either down, or too slow. Give this a try when the internet is up."
 };
 
+export const selectValues = [
+  {
+    id: "1 - Name",
+    name: "Name"
+  },
+  {
+    id: "2 - Email",
+    name: "Email"
+  },
+  {
+    id: "3 - Company",
+    name: "Company"
+  },
+  {
+    id: "4 - None",
+    name: "None"
+  }
+];
+
 export default socialPlatformHomeURL;
