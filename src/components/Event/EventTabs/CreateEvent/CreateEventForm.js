@@ -135,13 +135,6 @@ export default class CreateEventForm extends React.Component {
           >
             SUBMIT
           </button>
-          {/*<button
-            className="create-event-sb-btn"
-            type="submit"
-            onClick={this.props.onCompletion}
-          >
-            GET QR CODE
-          </button>*/}
           <div style={{ padding: "5px" }}></div>
         </div>
       </div>

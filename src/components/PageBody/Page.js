@@ -30,28 +30,30 @@ export default class Page extends React.Component {
   };
 
   checkEventId = async (appendedString, genericURL) => {
-    const eventId = {
-      EVENT_ID: appendedString
-    };
-    await axios
-      .post(env_variable.BACKEND_URL + `/api/event/validate`, eventId)
-      .then(
-        res => {
-          if (res.data.response.length !== 0) {
-            window.localStorage.setItem("eventid", appendedString);
-            window.parent.location.replace(genericURL);
-          } else {
-            alert(
-              "The Event ID in the URL is not valid. You are being redirected to the Home page."
-            );
-            window.localStorage.removeItem("eventid");
-            window.parent.location.replace(genericURL);
+    if (appendedString.slice(-5) !== "admin") {
+      const eventId = {
+        EVENT_ID: appendedString
+      };
+      await axios
+        .post(env_variable.BACKEND_URL + `/api/event/validate`, eventId)
+        .then(
+          res => {
+            if (res.data.response.length !== 0) {
+              window.localStorage.setItem("eventid", appendedString);
+              window.parent.location.replace(genericURL);
+            } else {
+              alert(
+                "The Event ID in the URL is not valid. You are being redirected to the Home page."
+              );
+              window.localStorage.removeItem("eventid");
+              window.parent.location.replace(genericURL);
+            }
+          },
+          err => {
+            console.log("TODO: Service Error");
           }
-        },
-        err => {
-          console.log("TODO: Service Error");
-        }
-      );
+        );
+    }
   };
 
   render() {

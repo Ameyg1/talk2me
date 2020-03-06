@@ -8,6 +8,7 @@ import TextField from "../Common/TextField.js";
 import env_variable from "../../Reusables/EnvironmentVariables.js";
 import { selectValues } from "../../Reusables/Constants.js";
 import Select from "../Common/Select.js";
+import "../../config/stylesheets/defaults/Admin.css";
 
 export default class Admin extends React.Component {
   constructor(props) {
@@ -112,7 +113,7 @@ export default class Admin extends React.Component {
   }
 
   isOptionalFieldsCorrect() {
-    if (this.state.selectedField === "All") {
+    if (this.state.selectedField === "4 - None") {
       return true;
     } else {
       if (this.state.selectedFieldValue) {
@@ -143,23 +144,48 @@ export default class Admin extends React.Component {
     if (person.ID) {
       return (
         <ListItem alignItems="flex-start">
-          <ListItemText
-            primary={person.NAME}
-            secondary={
-              <label>
-                <span>
-                  {person.TITLE}
-                  <span>{person.COMPANY ? ", " + person.COMPANY : null}</span>
-                </span>
-              </label>
-            }
-          />
+          <div className="admin-search-item-container">
+            <div className="search-item-detail-container">
+              <ListItemText
+                primary={person.NAME}
+                secondary={
+                  <label>
+                    <span>
+                      {person.TITLE}
+                      <span>
+                        {person.COMPANY ? ", " + person.COMPANY : null}
+                      </span>
+                    </span>
+                  </label>
+                }
+              />
+            </div>
+            <div className="search-item-delete-button-container">
+              <div className="search-item-delete-button-wrapper" />
+              <div className="search-item-delete-button-wrapper">
+                <button
+                  className="admin-delete-button"
+                  type="submit"
+                  value={person.ID}
+                  onClick={e => this.handleDeletePress(e, person)}
+                >
+                  Delete
+                </button>
+              </div>
+              <div className="search-item-delete-button-wrapper" />
+            </div>
+          </div>
         </ListItem>
       );
     } else if (person.ID === 0) {
       return <div style={{ padding: "50px" }} />;
     }
   }
+
+  handleDeletePress = (e, user) => {
+    console.log("Delete pressed");
+    console.log(user.ID);
+  };
 
   handleSelectChange = selectedField => {
     this.setState({
@@ -207,12 +233,6 @@ export default class Admin extends React.Component {
         <div style={{ border: "solid black", marginTop: "30px" }}>
           {this.renderSearchList(this.state.Attendees)}
         </div>
-        {/* <label>Test</label>
-        <label>{this.state.EVENT_ID}</label>
-        <label>{this.state.NAME}</label>
-        <label>{this.state.EMAIL}</label>
-        <label>{this.state.COMPANY}</label>
-        <label>{this.state.ID}</label> */}
       </div>
     );
   }
