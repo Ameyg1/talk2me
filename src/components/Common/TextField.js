@@ -50,14 +50,16 @@ export default class KTextField extends React.Component {
             onChange={this.props.onChange}
             placeholder={this.props.placeholder}
           />
-          <input
-            className={`${this.props.buttonClass}-embedded-button`}
-            type={this.props.buttonType}
-            onClick={this.props.onButtonClick}
-            value={this.props.embeddedButtonInfo}
-            src={this.props.buttonImage}
-            alt={this.props.embeddedButtonInfo}
-          />
+          <div className="textfield-button">
+            <input
+              className={`${this.props.buttonClass}-embedded-button`}
+              type={this.props.buttonType}
+              onClick={this.props.onButtonClick}
+              value={this.props.embeddedButtonInfo}
+              src={this.props.buttonImage}
+              alt={this.props.embeddedButtonInfo}
+            />
+          </div>
         </label>
       );
     } else {

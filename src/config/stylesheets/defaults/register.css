@@ -35,8 +35,6 @@
 input {
   border-style: none none solid none;
   border-width: 0px;
-  height: 25px;
-  width: 100%;
   font-size: 0.9em;
 }
 textarea {
@@ -130,6 +128,7 @@ label {
   margin: 0px;
   display: flex;
   flex-direction: row;
+  height: 100%;
   width: 100%;
   border-radius: 3px;
 }
@@ -146,14 +145,17 @@ label {
 }
 
 #textFieldOnTheLeft {
-  flex: 5;
+  flex: 12;
+}
+
+.textfield-button {
+  flex: 2;
+  background-color: black;
 }
 
 .enter-event-embedded-button {
-  flex: 1;
-  background-color: black;
-  height: 47px;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 .k-text-field {
