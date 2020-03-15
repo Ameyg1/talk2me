@@ -41,9 +41,15 @@
   width: 100%;
 }
 
+.create-event-form-container {
+  padding: 1px 20px 20px 20px;
+  background-color: white;
+}
+
 .create-event-new-event-container {
   margin: auto;
   padding: 20px;
+  background-color: white;
 }
 
 #new-event-items {

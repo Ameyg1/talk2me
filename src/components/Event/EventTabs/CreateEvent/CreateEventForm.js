@@ -81,13 +81,14 @@ export default class CreateEventForm extends React.Component {
 
   render() {
     return (
-      <div className="create-event-container">
+      <div className="create-event-form-container">
         <div className="create-event-form">
           <KTextField
             fieldTitle="Event Name *"
             type="text"
             value={this.state.EVENT_NAME}
             fieldName="EVENT_NAME"
+            placeholder=" Peace and Love"
             onChange={e => this.handleText(e, "EVENT_NAME")}
           />
           <KTextField
@@ -95,6 +96,7 @@ export default class CreateEventForm extends React.Component {
             type="text"
             value={this.state.ORGANISER}
             fieldName="ORGANISER"
+            placeholder=" Mia Tuatini"
             onChange={e => this.handleText(e, "ORGANISER")}
           />
           <KTextField
@@ -102,6 +104,7 @@ export default class CreateEventForm extends React.Component {
             type="text"
             value={this.state.ORG_EMAIL}
             fieldName="ORG_EMAIL"
+            placeholder=" miatuatini@kunekt.co"
             onChange={e => this.handleText(e, "ORG_EMAIL")}
           />
           <KTextField
@@ -109,16 +112,9 @@ export default class CreateEventForm extends React.Component {
             type="text"
             value={this.state.VENUE}
             fieldName="VENUE"
+            placeholder=" Auckland Community Hall"
             onChange={e => this.handleText(e, "VENUE")}
           />
-          {/* <KTextField
-            fieldTitle="This meetup is for..."
-            type="textarea"
-            value={this.state.PURPOSE}
-            fieldName="PURPOSE"
-            onChange={e => this.handleText(e, "PURPOSE")}
-            helpMessage="Type in upto 100 characters."
-          /> */}
           <div className="create-event-sb-text">
             By clicking Submit, I agree that I have read and accepted the&nbsp;
             <a href="https://www.kunekt.co/terms-software/">

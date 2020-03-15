@@ -54,14 +54,6 @@ export default class UserListFooter extends React.Component {
       </label>
     );
   }
-  // renderattendeeadd() {
-  //   return (
-  //     <div align="center">
-  //       Want to add your business card?{" "}
-  //       <a href={env_variable.PROD_URL + "/profile"}>Click Here</a>
-  //     </div>
-  //   );
-  // }
   renderpower() {
     return (
       <label style={{ textAlign: "center", paddingBottom: "10px" }}>

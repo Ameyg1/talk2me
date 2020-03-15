@@ -46,16 +46,6 @@ export default class EventSuccess extends React.Component {
             Share this information in your event communications: emails,
             presentations, flyers.
           </div>
-          {/* <div id="new-event-items">
-             <button 
-              className="create-event-sb-btn"
-              id="share-button"
-              type="submit"
-              onClick={this.props.onCompletion}
-            >
-              SHARE WITH ATTENDEES
-            </button>
-    </div> */}
         </div>
       </div>
     );

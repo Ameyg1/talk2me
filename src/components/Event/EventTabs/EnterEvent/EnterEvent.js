@@ -5,6 +5,7 @@ import "../../../../config/stylesheets/defaults/EnterEvent.css";
 import "../../../../config/stylesheets/customisables/colors.css";
 import env_variable from "../../../../Reusables/EnvironmentVariables";
 import { Kunekt_Error } from "../../../../Reusables/Constants";
+import searchIcon from "../../../../assets/icons/Popup/search_button.png";
 
 export default class EnterEvent extends React.Component {
   constructor(props) {
@@ -112,22 +113,6 @@ export default class EnterEvent extends React.Component {
           </button>
         </div>
       );
-    } else {
-      return (
-        <div className="enter-event-lower-half-tour" style={{ float: "left" }}>
-          {/*   <div className="enter-event-kunekt-tour">
-           {<img src={logo} className="enter-event-kunekt-logo" alt="New to Kunekt 2" /> 
-          </div> */}
-          <button
-            id="join-event"
-            className="enter-event-kunekt-button"
-            type="button"
-            onClick={this.takeATour.bind(this)}
-          >
-            Try the Demo
-          </button>
-        </div>
-      );
     }
   }
 
@@ -161,22 +146,33 @@ export default class EnterEvent extends React.Component {
   render() {
     return (
       <div className="enter-event-container">
-        <div>
+        <div className="search-event-header-assets">
+          <label className="enter-event-header">Enter Event</label>
+          <button
+            className="enter-event-demo-link"
+            onClick={this.takeATour.bind(this)}
+          >
+            Try a demo
+          </button>
+        </div>
+        <div className="search-event-container">
           <KTextField
-            fieldTitle="Enter Event ID"
             type="embeddedButton"
+            buttonType="image"
+            embeddedButtonInfo="search"
             value={this.state.EVENT_ID}
             onChange={e => this.handleChange(e, "EVENT_ID")}
             fieldName="EVENT_ID"
-            embeddedButtonInfo="Search"
+            buttonImage={searchIcon}
             onButtonClick={this.checkEvent}
+            placeholder=" 100015"
+            buttonClass="enter-event"
             helpMessage="Contact your event host if you are not sure about the event ID.
             To try our demo, use event ID 100015."
           />
         </div>
         <div style={{ padding: "10px" }} />
         {this.changeLowerUI(this.state.ui.isEventDisplayed)}
-        <div style={{ padding: "5px" }}></div>
       </div>
     );
   }

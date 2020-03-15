@@ -9,9 +9,7 @@ export default class KunektQRCode extends React.Component {
   }
 
   makeURL() {
-    return (
-      env_variable.PROD_URL + "/" + window.localStorage.getItem("eventid")
-    );
+    return env_variable.PROD_URL + "/" + window.localStorage.getItem("eventid");
   }
   renderQRCode(url) {
     return <QRCode value={url} id="new-event-items" />;

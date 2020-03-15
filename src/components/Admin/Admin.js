@@ -45,7 +45,6 @@ export default class Admin extends React.Component {
         )
         .then(
           response => {
-            this.resetState();
             this.setState({
               Attendees: response.data.response
             });
@@ -182,9 +181,20 @@ export default class Admin extends React.Component {
     }
   }
 
-  handleDeletePress = (e, user) => {
+  handleDeletePress = async (e, user) => {
     console.log("Delete pressed");
     console.log(user.ID);
+    await axios
+      .delete(env_variable.BACKEND_URL + "/api/attendees/" + user.ID)
+      .then(
+        response => {
+          console.log("Deleted");
+          this.getUsersList();
+        },
+        error => {
+          console.log("TODO: Handle error");
+        }
+      );
   };
 
   handleSelectChange = selectedField => {
@@ -222,14 +232,36 @@ export default class Admin extends React.Component {
           onChange={e => this.handleTextChange(e, "selectedFieldValue")}
           fieldName="selectedFieldValue"
         />
-        <button
-          type="submit"
-          className="add-profile-button"
-          onClick={e => this.getUsersList(e)}
-          style={{ marginTop: "40px", marginLeft: "auto", marginRight: "auto" }}
-        >
-          Search
-        </button>
+        <div className="admin-search-buttons-container">
+          <button
+            type="submit"
+            className="add-profile-button"
+            onClick={e => this.getUsersList(e)}
+            style={{
+              marginTop: "40px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              flex: 1
+            }}
+          >
+            Search
+          </button>
+          <div style={{ paddingLeft: "10px", paddingRight: "10px" }} />
+          <button
+            disabled
+            type="submit"
+            className="add-profile-button"
+            onClick={e => this.resetState}
+            style={{
+              marginTop: "40px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              flex: 1
+            }}
+          >
+            Reset Search
+          </button>
+        </div>
         <div style={{ border: "solid black", marginTop: "30px" }}>
           {this.renderSearchList(this.state.Attendees)}
         </div>

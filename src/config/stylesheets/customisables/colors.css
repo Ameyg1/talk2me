@@ -89,6 +89,9 @@
 input {
   border-color: rgb(202, 202, 202);
 }
+input::placeholder {
+  color: #cccccc;
+}
 textarea {
   border-color: rgb(202, 202, 202);
 }
@@ -123,6 +126,7 @@ textarea {
 }
 .textfield {
   background-color: rgb(219, 219, 219);
+  border: 1px solid #333333;
 }
 .prefieldLink {
   color: rgb(73, 73, 73);
@@ -137,10 +141,7 @@ textarea {
   color: #999999;
 }
 .react-tabs__tab--selected {
-  color: rgb(73, 73, 73);
-}
-.react-tabs__tab-list {
-  border-bottom: 1px solid #aaa;
+  color: black;
 }
 
 /* Users List */

@@ -4,9 +4,8 @@
   border-bottom: none;
   position: relative;
   list-style: none;
-  padding: 10px 32px;
+  padding: 15px 10px;
   cursor: pointer;
-  font-weight: bold;
   color: #999999;
   text-align: center;
   font-family: "Lucida Grande";
@@ -14,14 +13,10 @@
 }
 
 .react-tabs__tab--selected {
-  color: rgb(73, 73, 73);
+  color: black;
   border-radius: 20px 20px 0 0;
   border-style: outset;
-}
-
-.react-tabs__tab-list {
-  border-bottom: 1px solid #aaa;
-  padding: 0;
+  border-bottom: 2px solid black;
 }
 
 .tab-list {
@@ -29,10 +24,13 @@
   flex-direction: row;
   padding: 0px;
   margin: 0px;
+  background-color: white;
+  border-radius: 5px 5px 0 0;
 }
 
 .react-tabs__tab-panel--selected {
   overflow: scroll;
   height: 95%;
-  width: 97%;
+  width: 100%;
+  background-color: transparent;
 }
