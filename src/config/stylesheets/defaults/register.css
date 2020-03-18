@@ -167,8 +167,20 @@ label {
 }
 
 .back-button {
+  display: flex;
+  flex-direction: row;
+  height: 26px;
+  line-height: 26px;
+}
+.back-button-icon {
+  padding-right: 8px;
+  font-weight: bold;
+  font-size: 1.9em;
+  font-family: "Arial Narrow";
+}
+.back-button-text {
+  font-size: 1.1em;
   font-family: Arial;
-  font-size: 1em;
 }
 
 .register-details-header,

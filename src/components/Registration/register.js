@@ -316,7 +316,8 @@ class RegistrationForm extends Component {
       return (
         <div className="back-button-container">
           <button className="back-button" onClick={goToUserlist}>
-            {"< Back"}
+            <label className="back-button-icon">{"<"}</label>
+            <label className="back-button-text">{"Back"}</label>
           </button>
         </div>
       );
@@ -348,7 +349,6 @@ class RegistrationForm extends Component {
         {renderScreenHeader()}
         <div className={setStyleForComponent("register-form")}>
           {renderBackButton()}
-          <div className="title">Create Your Free Account</div>
           {this.state.messageIsDisplayed
             ? this.renderMessage(this.state.messageStatus)
             : null}
