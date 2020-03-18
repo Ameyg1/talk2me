@@ -15,7 +15,9 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "../../config/stylesheets/defaults/UsersList.css";
 import env_variable from "../../Reusables/EnvironmentVariables";
 import UserListFooter from "./UserListFooter";
-import exitEventIcon from "../../assets/icons/UserList/exit-event.png";
+import exitEventIcon from "../../assets/icons/UserList/userlist-header-exit-event-button-icon.png";
+import userlistHeaderLocation from "../../assets/icons/UserList/userlist-header-location.png";
+import userListHeaderOrganiser from "../../assets/icons/UserList/userlist-header-organiser.png";
 import BusinessCard from "../UserList/BusinessCard/BusinessCard";
 
 export default class UsersList extends Component {
@@ -26,7 +28,9 @@ export default class UsersList extends Component {
       hasReceivedList: false,
       EVENT_ID: window.localStorage.getItem("eventid"),
       event: {
-        name: ""
+        name: "",
+        organiser: "",
+        location: ""
       }
     };
   }
@@ -44,9 +48,12 @@ export default class UsersList extends Component {
               console.log("TODO: Event Validity Error");
             } else {
               this.setState({
-                event: { name: res.data.response[0].EVENT_NAME }
+                event: {
+                  name: res.data.response[0].EVENT_NAME,
+                  organiser: res.data.response[0].ORGANISER,
+                  location: res.data.response[0].VENUE
+                }
               });
-              console.log(res.data.response[0]);
             }
           },
           err => {
@@ -156,16 +163,48 @@ export default class UsersList extends Component {
 
   renderEventInfo() {
     return (
-      <div className="event-info-container">
-        <label className="event-name">{this.state.event.name}</label>
-        <div className="reset-event">
-          <input
-            className="reset-event-button-image"
-            type="image"
-            src={exitEventIcon}
-            alt="Find other event"
-            onClick={this.resetEvent}
-          />
+      <div className="app-header">
+        <div className="userlist-primary-header-line">
+          <div className="userlist-event-name">
+            <label className="event-details-header">
+              {this.state.event.name}
+            </label>
+          </div>
+          <div className="reset-event">
+            <input
+              className="reset-event-button-image"
+              type="image"
+              src={exitEventIcon}
+              alt="Find other event"
+              onClick={this.resetEvent}
+            />
+          </div>
+        </div>
+        <div className="userlist-secondary-header-line">
+          <div className="userlist-organiser-container">
+            <div className="header-organiser-icon-container">
+              <img
+                src={userListHeaderOrganiser}
+                alt="org"
+                className="header-organiser-icon"
+              />
+            </div>
+            <label className="header-organiser-text">
+              {this.state.event.organiser}
+            </label>
+          </div>
+          <div className="userlist-location-container">
+            <div className="header-location-icon-container">
+              <img
+                src={userlistHeaderLocation}
+                alt="org"
+                className="header-location-icon"
+              />
+            </div>
+            <label className="header-location-text">
+              {this.state.event.location}
+            </label>
+          </div>
         </div>
       </div>
     );
@@ -174,9 +213,8 @@ export default class UsersList extends Component {
   renderUserListHeader() {
     return (
       <div className="list-header-container">
-        <label className="userlist-header">Attendee List</label>
         <button className="add-profile-button" onClick={this.goToAddProfile}>
-          ADD PROFILE
+          + ADD PROFILE
         </button>
       </div>
     );

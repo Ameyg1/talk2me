@@ -22,7 +22,8 @@
 
 /* Enter Event */
 .enter-event-kunekt-button {
-  background-color: #333333;
+  border: 1px solid black;
+  background-color: black;
   color: #ffffff;
 }
 .enter-event-textfield {
@@ -145,7 +146,7 @@ textarea {
 }
 
 /* Users List */
-.event-info-container {
+.app-header {
   border-bottom: 1px solid gray;
   background: #eeeeee;
 }

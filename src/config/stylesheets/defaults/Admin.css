@@ -35,7 +35,7 @@
   flex: 1;
 }
 
-.add-profile-button:disabled {
+.admin-functional-button:disabled {
   flex: 1;
   border: 1px solid #aaaaaa;
   background-color: #aaaaaa;
@@ -45,4 +45,20 @@
   font-size: 00.8em;
   font-weight: bold;
   margin-right: 15px;
+}
+
+.admin-functional-button {
+  flex: 1;
+  border: 1px solid #333333;
+  background-color: #333333;
+  border-radius: 3px;
+  color: #ffffff;
+  height: 30px;
+  font-size: 00.8em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 15px;
+  border: 1px solid #333333;
+  background-color: #333333;
+  color: #ffffff;
 }

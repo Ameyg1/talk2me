@@ -235,7 +235,7 @@ export default class Admin extends React.Component {
         <div className="admin-search-buttons-container">
           <button
             type="submit"
-            className="add-profile-button"
+            className="admin-functional-button"
             onClick={e => this.getUsersList(e)}
             style={{
               marginTop: "40px",
@@ -250,7 +250,7 @@ export default class Admin extends React.Component {
           <button
             disabled
             type="submit"
-            className="add-profile-button"
+            className="admin-functional-button"
             onClick={e => this.resetState}
             style={{
               marginTop: "40px",

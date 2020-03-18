@@ -6,6 +6,8 @@ import "../../../../config/stylesheets/customisables/colors.css";
 import env_variable from "../../../../Reusables/EnvironmentVariables";
 import { Kunekt_Error } from "../../../../Reusables/Constants";
 import searchIcon from "../../../../assets/icons/Popup/search_button.png";
+import userlistHeaderLocation from "../../../../assets/icons/UserList/userlist-header-location.png";
+import userListHeaderOrganiser from "../../../../assets/icons/UserList/userlist-header-organiser.png";
 
 export default class EnterEvent extends React.Component {
   constructor(props) {
@@ -87,21 +89,39 @@ export default class EnterEvent extends React.Component {
       return (
         <div className="enter-event-lower-half">
           <div className="enter-event-event-details">
-            <label style={{ fontSize: "15px", textDecoration: "underline" }}>
-              Your Event Details:
-            </label>
-            <div style={{ padding: "3px" }} />
-            <label style={{ fontWeight: "bold", fontSize: "13px" }}>
+            <label className="enter-event-event-name">
               {this.state.eventDetails.EVENT_NAME}
             </label>
-            <div style={{ padding: "2px" }} />
-            <label style={{ fontSize: "13px" }}>
-              {this.state.eventDetails.ORGANISER}
-            </label>
-            <div style={{ padding: "2px" }} />
-            <label style={{ fontSize: "12px" }}>
-              {this.state.eventDetails.VENUE}
-            </label>
+            <div className="enter-event-organiser-container">
+              <div className="enter-event-organiser-icon-container">
+                <img
+                  src={userListHeaderOrganiser}
+                  alt="org"
+                  className="enter-event-organiser-icon"
+                />
+              </div>
+              <label
+                className="enter-event-organiser-text"
+                style={{ fontSize: "13px" }}
+              >
+                Organiser: {this.state.eventDetails.ORGANISER}
+              </label>
+            </div>
+            <div className="enter-event-location-container">
+              <div className="enter-event-location-icon-container">
+                <img
+                  src={userlistHeaderLocation}
+                  alt="org"
+                  className="enter-event-location-icon"
+                />
+              </div>
+              <label
+                className="enter-event-location-text"
+                style={{ fontSize: "12px" }}
+              >
+                {this.state.eventDetails.VENUE}
+              </label>
+            </div>
           </div>
           <button
             id="join-event"
