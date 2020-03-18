@@ -169,17 +169,17 @@ label {
 .back-button {
   display: flex;
   flex-direction: row;
-  height: 26px;
-  line-height: 26px;
+  height: 28px;
+  line-height: 28px;
 }
 .back-button-icon {
-  padding-right: 8px;
+  padding-right: 10px;
   font-weight: bold;
-  font-size: 1.9em;
+  font-size: 36px;
   font-family: "Arial Narrow";
 }
 .back-button-text {
-  font-size: 1.1em;
+  font-size: 17px;
   font-family: Arial;
 }
 
