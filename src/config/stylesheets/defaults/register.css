@@ -173,10 +173,10 @@ label {
   line-height: 28px;
 }
 .back-button-icon {
-  padding-right: 10px;
+  padding-right: 6px;
   font-weight: bold;
-  font-size: 36px;
-  font-family: "Arial Narrow";
+  font-size: 26px;
+  font-family: "Futura";
 }
 .back-button-text {
   font-size: 17px;
