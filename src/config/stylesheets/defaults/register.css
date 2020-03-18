@@ -1,11 +1,9 @@
 .register-form {
   width: 90%;
-  height: 880px;
-  margin: 50px auto;
+  margin: 10px auto;
 }
 .register-form-desktop {
   width: 450px;
-  height: 880px;
   margin: 50px auto;
 }
 
@@ -171,4 +169,20 @@ label {
 .back-button {
   font-family: Arial;
   font-size: 1em;
+}
+
+.register-details-header,
+.register-details-subheader {
+  color: white;
+  padding-left: 20px;
+}
+
+.register-details-header {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.register-details-subheader {
+  padding-right: 20px;
 }

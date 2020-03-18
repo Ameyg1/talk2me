@@ -134,6 +134,8 @@ textarea {
 }
 .back-button {
   color: #888888;
+  background-color: white;
+  border: 0px solid white;
 }
 
 /* Tabs */
@@ -148,7 +150,7 @@ textarea {
 /* Users List */
 .app-header {
   border-bottom: 1px solid gray;
-  background: #eeeeee;
+  background: #000000;
 }
 .list-header-container {
   border-bottom: 1px solid transparent;

@@ -326,8 +326,26 @@ class RegistrationForm extends Component {
       window.parent.location.replace(env_variable.PROD_URL);
     };
 
+    const renderScreenHeader = () => {
+      return (
+        <div className="app-header">
+          <div className="userlist-primary-header-line">
+            <label className="register-details-header">
+              Add your profile to the event
+            </label>
+          </div>
+          <div className="userlist-secondary-header-line">
+            <label className="register-details-subheader">
+              Create your digital business card and help others connect with you
+            </label>
+          </div>
+        </div>
+      );
+    };
+
     return (
       <div className="container">
+        {renderScreenHeader()}
         <div className={setStyleForComponent("register-form")}>
           {renderBackButton()}
           <div className="title">Create Your Free Account</div>
