@@ -17,14 +17,14 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/">
-          <UsersList />
-        </Route>
         <Route path="/profile">
           <RegistrationForm />
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route exact path="/">
+          <UsersList />
         </Route>
       </Switch>
     );

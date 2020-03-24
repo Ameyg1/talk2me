@@ -62,3 +62,199 @@
 html, body, #app, #app>div {
   height: 100%
 }
+  
+  /* General Animations */
+  .fadein-slow {
+    animation: fadein 4s;
+  }
+  
+  .fadein-fast {
+    animation: fadein 2s;
+  }
+  
+  @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+  }
+  
+  /* card */
+  .card {
+    background-color: whitesmoke;
+    border-radius: 3%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    word-wrap: break-word;
+    width: 215px;
+    height: 100%;
+    margin-bottom: 20px;
+    transition: .5s;
+  }
+  
+  .card:hover {
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.45);
+  }
+  
+  .close {
+    border-radius: 50%;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    float: right;
+    top: -228px;
+    right: -6px;
+    font-size: 2em;
+    position: relative;
+    color: whitesmoke;
+    transition: .5s;
+  }
+  
+  .close:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  
+  img {
+    width: 100%;
+    border-radius: 3% 3% 0 0;
+  }
+
+  .negitive-margin {
+      margin-top: -45px;
+  }
+  
+  h4 {
+    font-size: 1.2em;
+    margin: 15px;
+    color: #757575;
+  }
+  
+  @keyframes pulse-icon {
+      from {
+        text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+      to {
+        text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.55);
+      }
+  }
+  
+  @keyframes pulse-colors {
+      from {
+        background: #c9c3e6;
+        border: 3px solid #a29ccc;
+      }
+      to {
+        background: #6762a6;
+        border: 3px solid #c9c3e6;
+      }
+  }
+
+.float-left {
+    float: left;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+  
+  /* Button reset */
+.custom-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+  
+  /* Shared button styles */
+  .button-wrapper {
+    display: inline-block;
+  }
+  
+  .custom-button {
+    border-radius: 50%;
+    width: 215px;
+    height: 215px;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    transition-timing-function: ease-in;
+    transition: 0.3s;
+    transform: scale(0.7);
+  }
+  
+  .custom-button:hover {
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .custom-button.disabled {
+    background-color: #999 !important;
+    cursor: no-drop;
+  }
+  
+  .custom-button.disabled:hover {
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  
+  .custom-button.disabled:hover span {
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  
+  .custom-button span {
+    font-size: 10em !important;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+    color: whitesmoke;
+  }
+
+  .custom-button span.close {
+    font-size: 4em !important;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+    color: whitesmoke;
+  }
+  
+  .custom-button:hover span {
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: rotate(-1.1deg)
+  }
+  
+  /* Twitter */
+  .custom-button.twitter {
+    border: 3px solid #ffffff;
+    background: #433e90
+  }
+  
+  .custom-button.twitter:hover {
+    background: #326ada;
+  }
+  
+  /* Google */
+  .custom-button.google {
+    border: 3px solid #ffffff;
+    background: #0057e7;
+  }
+  
+  .custom-button.google:hover {
+    background: #008744;
+  }
+  
+  /* Facebook */
+  .custom-button.facebook {
+    border: 3px solid #ffffff;
+    background: #8b9dc3;
+  }
+  
+  .custom-button.facebook:hover {
+    background: #3b5998;
+  }
+  
+  /* Github */
+  .custom-button.github {
+    border: 3px solid #ffffff;
+    background: #767676;
+  }
+  
+  .custom-button.github:hover {
+    background: #6e5494;
+  }

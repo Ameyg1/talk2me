@@ -1,8 +1,6 @@
 export const env_variable = {
-  PROD_URL: "https://app.kunekt.co",
-  LOCAL_URL: "http://localhost:3000",
-  BACKEND_URL: "https://backend.kunekt.co",
-  LOCAL_BACKEND_URL: "http://localhost:5000"
+  PROD_URL: "https://localhost:3000",
+  BACKEND_URL: "https://localhost:8080"
 };
 
 export default env_variable;
