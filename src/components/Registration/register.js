@@ -9,6 +9,10 @@ import socialPlatformURL, {
   Kunekt_Error
 } from "../../Reusables/Constants";
 import env_variable from "../../Reusables/EnvironmentVariables";
+import OAuth from './OAuth';
+import io from 'socket.io-client';
+const socket = io(env_variable.BACKEND_URL)
+const providers = ['twitter', 'google', 'facebook', 'github', 'linkedin']
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -344,6 +348,15 @@ class RegistrationForm extends Component {
       );
     };
 
+    const buttons = (providers, socket) => 
+      providers.map(provider => 
+        <OAuth 
+          provider={provider}
+          key={provider}
+          socket={socket}
+        />
+      )
+
     return (
       <div className="container">
         {renderScreenHeader()}
@@ -352,6 +365,15 @@ class RegistrationForm extends Component {
           {this.state.messageIsDisplayed
             ? this.renderMessage(this.state.messageStatus)
             : null}
+            
+            
+        <span>Sign up with a social account (optional)</span>
+        <div className='wrapper'>
+            <div className='container'>
+            { buttons(providers, socket) }
+            </div>
+        </div>
+
           <div className="form">
             <KTextField
               fieldTitle="Full Name *"

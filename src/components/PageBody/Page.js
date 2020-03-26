@@ -62,7 +62,7 @@ export default class Page extends React.Component {
       const appendedString = window.location.href.substring(
         genericURL.length + 1
       );
-      this.checkEventId(appendedString, genericURL);
+    //   this.checkEventId(appendedString, genericURL);
     }
     return (
       <div>
