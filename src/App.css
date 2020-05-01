@@ -1,36 +1,76 @@
+.user-div {
+  margin: auto;
+  width: auto;
+  padding: 50px 40px;
+}
 
- .user-div{
-   margin: auto;
-   width:auto;
-   padding: 50px 40px;
- }
+.core {
+  display: block;
+}
 
- .core
- {
-   display: block;
- }
-
- .bubble
- {
+.bubble {
   width: 100%;
   position: relative;
   height: 150px;
   background-color: rgb(255, 255, 255);
   background: white;
-  background: linear-gradient(22.5deg, rgba(2, 2, 2, 0.02) 0%, rgba(2, 2, 2, 0.02) 9%,rgba(252, 252, 252, 0.02) 9%, rgba(252, 252, 252, 0.02) 36%,rgba(237, 237, 237, 0.02) 36%, rgba(237, 237, 237, 0.02) 69%,rgba(78, 78, 78, 0.02) 69%, rgba(78, 78, 78, 0.02) 77%,rgba(85, 85, 85, 0.02) 77%, rgba(85, 85, 85, 0.02) 95%,rgba(43, 43, 43, 0.02) 95%, rgba(43, 43, 43, 0.02) 100%),linear-gradient(90deg, rgba(63, 63, 63, 0.02) 0%, rgba(63, 63, 63, 0.02) 8%,rgba(151, 151, 151, 0.02) 8%, rgba(151, 151, 151, 0.02) 53%,rgba(17, 17, 17, 0.02) 53%, rgba(17, 17, 17, 0.02) 56%,rgba(215, 215, 215, 0.02) 56%, rgba(215, 215, 215, 0.02) 65%,rgba(202, 202, 202, 0.02) 65%, rgba(202, 202, 202, 0.02) 79%,rgba(208, 208, 208, 0.02) 79%, rgba(208, 208, 208, 0.02) 100%),linear-gradient(67.5deg, rgba(129, 129, 129, 0.02) 0%, rgba(129, 129, 129, 0.02) 13%,rgba(71, 71, 71, 0.02) 13%, rgba(71, 71, 71, 0.02) 16%,rgba(51, 51, 51, 0.02) 16%, rgba(51, 51, 51, 0.02) 18%,rgba(86, 86, 86, 0.02) 18%, rgba(86, 86, 86, 0.02) 90%,rgba(227, 227, 227, 0.02) 90%, rgba(227, 227, 227, 0.02) 91%,rgba(30, 30, 30, 0.02) 91%, rgba(30, 30, 30, 0.02) 100%),linear-gradient(90deg, #FFF,#FFF);
+  background: linear-gradient(
+      22.5deg,
+      rgba(2, 2, 2, 0.02) 0%,
+      rgba(2, 2, 2, 0.02) 9%,
+      rgba(252, 252, 252, 0.02) 9%,
+      rgba(252, 252, 252, 0.02) 36%,
+      rgba(237, 237, 237, 0.02) 36%,
+      rgba(237, 237, 237, 0.02) 69%,
+      rgba(78, 78, 78, 0.02) 69%,
+      rgba(78, 78, 78, 0.02) 77%,
+      rgba(85, 85, 85, 0.02) 77%,
+      rgba(85, 85, 85, 0.02) 95%,
+      rgba(43, 43, 43, 0.02) 95%,
+      rgba(43, 43, 43, 0.02) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(63, 63, 63, 0.02) 0%,
+      rgba(63, 63, 63, 0.02) 8%,
+      rgba(151, 151, 151, 0.02) 8%,
+      rgba(151, 151, 151, 0.02) 53%,
+      rgba(17, 17, 17, 0.02) 53%,
+      rgba(17, 17, 17, 0.02) 56%,
+      rgba(215, 215, 215, 0.02) 56%,
+      rgba(215, 215, 215, 0.02) 65%,
+      rgba(202, 202, 202, 0.02) 65%,
+      rgba(202, 202, 202, 0.02) 79%,
+      rgba(208, 208, 208, 0.02) 79%,
+      rgba(208, 208, 208, 0.02) 100%
+    ),
+    linear-gradient(
+      67.5deg,
+      rgba(129, 129, 129, 0.02) 0%,
+      rgba(129, 129, 129, 0.02) 13%,
+      rgba(71, 71, 71, 0.02) 13%,
+      rgba(71, 71, 71, 0.02) 16%,
+      rgba(51, 51, 51, 0.02) 16%,
+      rgba(51, 51, 51, 0.02) 18%,
+      rgba(86, 86, 86, 0.02) 18%,
+      rgba(86, 86, 86, 0.02) 90%,
+      rgba(227, 227, 227, 0.02) 90%,
+      rgba(227, 227, 227, 0.02) 91%,
+      rgba(30, 30, 30, 0.02) 91%,
+      rgba(30, 30, 30, 0.02) 100%
+    ),
+    linear-gradient(90deg, #fff, #fff);
   border-bottom: 2px solid rgb(63, 63, 238);
- }
+}
 
- .bubble-contents
-{
+.bubble-contents {
   position: relative;
   width: 100%;
   height: 100%;
   display: inline-flex;
 }
 
-.portrait
-{
+.portrait {
   position: relative;
   margin-top: 25px;
   margin-left: 25px;
@@ -43,22 +83,26 @@
   border-radius: 50%;
   color: white;
   overflow: hidden;
-  -webkit-box-shadow: 0px 0px 21px 0px rgba(0,0,0,0.27);
-  -moz-box-shadow: 0px 0px 21px 0px rgba(0,0,0,0.27);
-  box-shadow: 0px 0px 21px 0px rgba(0,0,0,0.27);
+  -webkit-box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.27);
+  -moz-box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.27);
+  box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.27);
 }
 
-.details
-{
+.details {
   padding: 20px;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-html, body, #app, #app>div {
-  height: 100%
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
 }

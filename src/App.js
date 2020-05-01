@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
-import Page from "./components/PageBody/Page";
+import Temp from "./components/Temp/Temp";
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
-      <Page />
+      <Temp />
       <div style={{ flexGrow: 1 }}></div>
     </div>
   );
